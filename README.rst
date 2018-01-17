@@ -1,7 +1,8 @@
 Pymrio article 
 ===============
 
-.. image:: https://mybinder.org/badge.svg :target: https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb
+.. image:: https://mybinder.org/badge.svg 
+   :target: https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb
 
 This repo contains the latex version of the manuscript draft, figs and the Jupyter notebook for the supplements.
 
