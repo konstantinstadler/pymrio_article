@@ -1,3 +1,3 @@
 pymrio==0.3.4
 country_converter==0.6.3
-matplottlib==2.1
+matplotlib==2.1
