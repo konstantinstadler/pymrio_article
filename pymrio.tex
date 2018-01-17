@@ -1,0 +1,739 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+\usepackage{amsthm,amsmath}
+\usepackage{listings}
+%\RequirePackage{natbib}
+%\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
+%\RequirePackage{hyperref}
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+
+\lstset{language=Python}
+% additional python keywords
+\lstset{
+    morekeywords={with, as}
+}
+ %additional package kewords
+%\lstset{
+    %morekeywords={Pymrio, country_converter, coco, matplotlib, pyplot, plt, seaborn, sns}
+%}
+
+% additional method keywords
+%\lstset{
+ %morekeywords={parse_wiod, download_wiod2013, get_sectors, get_regions, diag_stressor,
+               %calc_x, calc_A, calc_all, agg_conc, country_converter, aggregate, rename_regions,
+               %style, context, savefig, show, plot_account, groupby}
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Pymrio}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
+   corref={aff1},                       % id of corresponding address, if any
+   %noteref={n1},                        % id's of article notes, if any
+   email={konstantin.stadler@ntnu.no}   % email address
+]{\inits{KST}\fnm{Konstantin} \snm{Stadler}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\address[id=aff1]{%                           % unique id
+  \orgname{Industrial Ecology Programme, Norwegian University of Science and Technology (NTNU)}
+  \city{Trondheim},                              % city
+  \cny{Norway}                                    % country
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{artnotes}
+%%\note{Sample of title note}     % note to the article
+%\note[id=n1]{Equal contributor} % note, connected to author
+%\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract} % abstract
+
+Pymrio is an open source tool for Environmentally Extended Multi-Regional Input-Output (EE MRIO) analysis developed in Python.
+It provides a high-level abstraction layer for global EE MRIO databases in order to simplify common EE MRIO data tasks. 
+Among others, Pymrio includes automatic download functions and parsers for several openly available EE MRIO databases (EXIOBASE 1 and 2, WIOD, Eora26) as well as methods for production and consumption based accounts calculation, aggregation, stressor origin estimation and visualization. 
+The use of a consistent storage format including meta data and modification history for MRIOs allows to exchange data with other analysis tools, aiming for an increased interoperability of Industrial Ecology analysis software.
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{MRIO}
+\kwd{Open Source}
+\kwd{Software}
+\kwd{Multi Regional Input Output Analysis}
+\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for twcolumn layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+%% Background %%
+%%
+\section*{Introduction}
+Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions.
+The analysis of the these tables have become the prevailing methodology in Industrial Ecology and sustainability science to evaluate environmental impacts of globally spanning supply chains in order to calculate the footprints of countries, regions and persons \cite{davis2010a,ivanova2017,tukker2016,verones2015}.
+
+In contrast to other Industrial Ecology methodologies like 
+Life Cycle Assessment (e.g. Brightway \cite{mutel2017} or openLCA \cite{openlca2018})
+or Material Flow Analysis (e.g. STAN \cite{cencic2008}), 
+few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015}.  
+
+One of the very few well documented and stand alone packages for IO analysis, PyIO \cite{nazara2003}, has not been updated since 2011.
+The MRIOLab suite \cite{geschke2017,lenzen2017} takes a different approach,  providing a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. In addition, the MRIOLab also includes functions for MRIO analysis.
+However, the MRIOLab suite is not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since these can not fully reproduced within the MRIOLab \cite{rahman2017,reyes2017}.
+
+As a consequence, MRIO analysis today relies on often ad-hoc produced scripts and analysis functions, hindering reproducibility of results and reuse of previous coding efforts.
+Here I present the open source tool Pymrio, a Python 3 package, which aims to close this method gap for EE MRIO analysis.
+
+The article proceeds with a description of the architecture of Pymrio, including the mathematical background and implementation details. Afterwards, a short tutorial with a simple use case for Pymrio is given. 
+Some future development plans are pointed out in the conclusion.
+
+\section*{Architecture}
+
+\subsection*{Mathematical Background}
+
+This section gives an overview about the mathematical background in Pymrio. 
+
+Generally, mathematical routines implemented in Pymrio follow the equations described below.
+If, however, a more efficient mechanism was available this was prefered.
+In this cases the original formula remains as comment in the source code.
+This was generally the case when numpy broadcasting \cite{vanderwalt2011} was available for a specific operation, resulting in a substantial speed up of the calculations.
+
+The Input-Output analysis implemented in Pymrio follows the classic Leontief demand-style modeling  \cite{leontief1970}.
+To do so, MRIO tables describe the global inter-industries flows within and across countries for $k$ countries with a transaction matrix $Z$:
+
+\begin{equation}
+    Z =
+    \begin{pmatrix}
+      Z_{1,1} & Z_{1,2} & \cdots & Z_{1,k} \\
+      Z_{2,1} & Z_{2,2} & \cdots & Z_{2,k} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      Z_{k,1} & Z_{k,2} & \cdots & Z_{k,k}
+    \end{pmatrix}
+\end{equation}
+
+Each submatrix on the main diagonal ($Z_{i,i}$) represent the domestic
+interactions for each industry $n$. The off diagonal matrices ($Z_{i,j}$)
+describe the trade from region $i$ to region $j$ (with $i, j = 1, \ldots, k$)
+for each industry. Accordingly, global final demand can be represented by
+
+\begin{equation}
+    Y =
+    \begin{pmatrix}
+      Y_{1,1} & Y_{1,2} & \cdots & Y_{1,k} \\
+      Y_{2,1} & Y_{2,2} & \cdots & Y_{2,k} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      Y_{k,1} & Y_{k,2} & \cdots & Y_{k,k}
+    \end{pmatrix}
+\end{equation}
+
+with final demand satisfied by domestic production in the main diagonal
+($Y_{i,i}$) and direct import to final demand from country $i$ to $j$ by
+$Y_{i,j}$.
+
+The global economy can thus be described by:
+
+\begin{equation}
+    x = Ze + Ye
+\end{equation}
+
+with $e$ representing the summation vector (column vector with 1's of
+appropriate dimension) and $x$ the gross output.
+
+The direct requirement matrix $A$ is given by multiplication of $Z$ with the
+diagonalised and inverted gross output $x$:
+
+\begin{equation}
+    A = Z\hat{x}^{-1}
+\end{equation}
+
+Based on the linear economy assumption of the IO model, gross output $x$ can than be determined for any arbitrary vector of final demand $y$ by multiplying with the total requirement matrix (Leontief matrix) $L$.
+
+\begin{equation}
+    x = (\mathrm{I}- A)^{-1}y = Ly
+\end{equation}
+
+
+IO systems can be extended with various exentions (satellite accounts).
+Among others these can represent factors of production (e.g. value added, employment)
+and environmental stressors associated with production.
+These direct factor $F$ can be normalized to the output per sector $x$ by
+
+\begin{equation}
+    S = F\hat{x}^{-1}
+\end{equation}
+
+Multipliers for $F$ are obtained by
+
+\begin{equation}
+    M = SL
+\end{equation}
+
+If parts of the environmental stressors occuring during the final use of product,
+these can be represented by $FY$ (e.g. household emissions).
+
+Production based accounts (direct territorial requirements) per country are therefore given by:
+
+\begin{equation}
+    D_{pba} = Fe + FYe
+\end{equation}
+
+Total requirements (footprints in case of environmental requirements) for any
+given final demand vector $y$ are than given by
+
+\begin{equation}
+    D_{cba} = My + FYe
+\end{equation}
+
+
+Total requirements (footprints in case of environmental requirements) for any
+given final demand vector $y$ are than given by 
+
+\begin{equation}
+    D_{cba} = My
+\end{equation}
+
+Setting the domestically satisfied final demand $Y_{i,i}$ to zero ($Y_{t} = Y -
+Y_{i,j}\; |\; i = j$) allow to calculate the factor of production occurring
+abroad (embodied in imports)
+
+\begin{equation}
+    D_{imp} = SMY_{t}
+\end{equation}
+
+The factors of production occurring domestically to satisfy final demand in
+other countries is given by:
+
+\begin{equation}
+    D_{exp} = S\widehat{MY_{t}e}
+\end{equation}
+
+
+\subsubsection*{Aggregation}
+
+For the aggregation of the MRIO system the matrix $S_k$ defines
+the aggregation matrix for regions and $S_n$ the aggregation matrix
+for sectors.
+
+\begin{equation}
+    S_k =
+    \begin{pmatrix}
+      b_{1,1} & b_{1,2} & \cdots & b_{1,k} \\
+      b_{2,1} & b_{2,2} & \cdots & b_{2,k} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      b_{w,1} & b_{w,2} & \cdots & b_{w,k}
+    \end{pmatrix}
+    S_n =
+    \begin{pmatrix}
+      b_{1,1} & b_{1,2} & \cdots & b_{1,n} \\
+      b_{2,1} & b_{2,2} & \cdots & b_{2,n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      b_{x,1} & b_{x,2} & \cdots & b_{x,n}
+    \end{pmatrix}
+\end{equation}
+
+With $w$ and $x$ defining the aggregated number of countries and sectors,
+respectively. Entries $b$ are set to 1 if the sector/country of the column
+belong to the aggregated sector/region in the corresponding row and zero
+otherwise. The complete aggregation matrix $S$ is given by the Kronecker
+product of $S_k$ and $S_n$:
+
+\begin{equation}
+    S = S_k \otimes S_n
+\end{equation}
+
+The aggregated IO system can than be obtained by
+
+\begin{equation}
+    Z_{agg} = SZS^\mathrm{T} 
+\end{equation}
+
+and
+
+\begin{equation}
+    Y_{agg} = SY(S_k \otimes \mathrm{I})^\mathrm{T}
+\end{equation}
+
+with $\mathrm{I}$ defined as the identity matrix with the size the final demand
+categories per country.
+
+Factor of production are aggregated by
+
+\begin{equation}
+    F_{agg} = FS^\mathrm{T} 
+\end{equation}
+
+and stressors occuring during final demand by
+
+\begin{equation}
+    FY_{agg} = FY(S_k \otimes \mathrm{I})^\mathrm{T}
+\end{equation}
+
+
+\subsection*{Implementation}
+
+The main design principle of Pymrio is based on the idea that an EE MRIO systems can be effectively represented as an object in an Object Oriented Programming (OOP) language.
+In Pymrio, such an EE MRIO object consists of a core component describing the economic relationships grouped with a various number of components describing the environmental and/or social extensions (satellite accounts, see Figure 1). 
+All components of the main object are in turn represented as objects, allowing to implement specific methods for each sub-component.
+
+{\it --------- Figure 1 about here ---------}
+
+This architecture described above was implemented in Python 3.5.
+The various tables of the MRIO system are stored in Pandas DataFrames \cite{mckinney2010}, therefore building upon a well-tested data-science framework.
+As a consequence, besides the specific methods implemented by Pymrio, the full functionality of Pandas and the underlying numpy framework \cite{vanderwalt2011} can be used to modify the MRIO data.
+
+Methods implemented in Pymrio which go beyond basic Pandas functionality are accompanied by a corresponding test harness which ensures the formal correctness of the method.
+The full source code is hosted on a public code repository \cite{stadler2018a} 
+together with an extensive documentation and tutorials.  
+Pymrio is openly available under the GNU General Public License v3.0.
+
+\subsection*{Parsing and Storage}
+To date, no standard way of storing MRIO databases has been defined.
+For example, the WIOD database is provided as xlsx tables, whereas Eora and EXIOBASE use (compressed) csv tables.
+For the two latter, however, the approach differs as Eora26 used pure numerical tables with separate files describing the headers, whereas EXIOBASE use csv tables which include the headers.
+To ease the use of different MRIO systems, Pymrio include parsers for the different formats.
+After parsing a MRIO system, Pymrio stores all data in a consistent way.
+For each component (core system and extension) data is stored in a separate folder.
+While the storage-format of the actual numerical data can be defined by the user, each storage folder also contains a json file (file\_parameters.json) which stored information about the used format. 
+Using the common json file format for storing the file meta data  allows to easily and automatically import the data in other programming environments. 
+By default, each tables is stored as a tab-separated text file format, including row and column headers.
+The folder with the economic core also contains a file metadata.json which stores information on version, name and system (industry by industry or product by product) as well as a record of modifications to the particular MRIO system (including when it was downloaded, any aggregations, removal/addition of extensions, etc.). 
+
+
+\section*{Usage}
+
+The following section provides a quick start guide for using Pymrio beginning at the installation followed by a basic input-output calculation example.
+For the example here, the WIOD MRIO database \cite{timmer2015} is used. 
+However, after downloading and parsing the database the same methods are available for any EE MRIO system.
+
+The code examples here are included as interactive Jupyter notebook tutorial in the SI.
+As the code example here only show the code inputs, refer to the notebook to see the output of a specific command.
+
+Pymrio is a Python \cite{python2018} package, Python version  $\geq$ 3.5 is required.
+The Pymrio packages is hosted on PyPI  \cite{pypi2018}  and the Anaconda Cloud \cite{anacondainc.2018}.
+Therefore, you can either use
+\begin{lstlisting}[language=Bash]
+pip install pymrio --upgrade
+\end{lstlisting}
+or
+\begin{lstlisting}[language=Bash]
+conda install -c konstantinstadler pymrio
+\end{lstlisting}
+
+to install Pymrio and all required packages.
+
+Pymrio can than be used in any Python programming environment.
+
+Throughout the code examples below, it is assumed that Pymrio is imported as follows: 
+
+\begin{lstlisting}
+import pymrio
+\end{lstlisting}
+
+First, the Pymrio MRIO download function is used to get the WIOD MRIO database with:
+\begin{lstlisting}
+raw_wiod_path = '/tmp/wiod/raw'
+pymrio.download_wiod2013(storage_folder=raw_wiod_path,
+                         years=[2008])
+\end{lstlisting}
+
+This downloads the 2008 MRIO table from WIOD. Omitting the year parameter would result in a download of all years.
+The function returns a Pymrio meta data object, which gives information about the WIOD version, system (in this case industry by industry) and records about from where the data was received (see SI cell 6).
+
+To parse the database into a Pymrio object use:
+\begin{lstlisting}
+wiod = pymrio.parse_wiod(raw_wiod_path, year=2008)
+\end{lstlisting}
+
+The available data can be explored by for example
+\begin{lstlisting}
+wiod.get_sectors()
+wiod.get_regions()
+\end{lstlisting}
+
+The transaction matrix can be inspected with
+\begin{lstlisting}
+wiod.Z
+\end{lstlisting}
+
+which returns a panda DataFrame with the recoreded monetary flows.
+
+WIOD includes several extensions, which are stored as sub-objects (see Figure 1) in Pymrio. 
+For example, in order to see the AIR emissions provided by WIOD:
+
+\begin{lstlisting}
+wiod.AIR.F
+\end{lstlisting}
+
+WIOD, however, does neither provide any normalized data (A-matrix, satellite account coefficient data) nor any consumption based accounts (footprints).
+
+In order to calculate them, one could go through all the missing data and compute each account. 
+Pymrio provides the required functions, for example to calculate the A-matrix:
+\begin{lstlisting}
+x = pymrio.calc_x(Z=wiod.Z, Y=wiod.Y)
+A = pymrio.calc_A(Z=wiod.Z, x=x)
+\end{lstlisting}
+
+Alternativly, Pymrio provides a function which finds all missing accounts and calculates them:
+\begin{lstlisting}
+wiod.calc_all()
+\end{lstlisting}
+
+At this point, a basic EE MRIO analysis is accomplished. For example, the regional consumption based accounts of the AIR emissions are now given by:
+\begin{lstlisting}
+wiod.AIR.D_cba_reg
+\end{lstlisting}
+
+Units are stored separetly in 
+\begin{lstlisting}
+wiod.AIR.unit
+\end{lstlisting}
+
+Pymrio can be linked with the country converter coco \cite{stadler2017} to ease the aggregation of MRIO and results into different classifications.
+Using the country converter, WIOD can easily be aggregated into EU and non-EU countries with singling out Germany and the UK by:
+
+\begin{lstlisting}
+import country_converter as coco
+wiod.aggregate(region_agg = coco.agg_conc(
+    original_countries='WIOD',
+    aggregates=[{'DEU': 'DEU', 'GBR':'GBR'}, 'EU'],
+    missing_countries='Other',
+    merge_multiple_string=None))
+wiod.rename_regions({'EU':'Rest of EU'}
+\end{lstlisting}
+
+To visualize the results for example for CH\textsubscript{4} the matplotlib framework \cite{hunter2007} can be used (Figure 2):
+\begin{lstlisting}
+import matplotlib.pyplot as plt
+with plt.style.context('ggplot'):
+    wiod.AIR.plot_account('CH4')
+    plt.savefig('airch4.png', dpi=300)
+    plt.show()
+\end{lstlisting}
+
+
+{\it --------- Figure 2 about here ---------}
+
+To calculate the source (in terms of regions and sectors) of a certain stressor or impact driven by consumption, one needs to diagonalize this stressor/impact. 
+
+This can be done with Pymrio by:
+\begin{lstlisting}
+diag_CH4 = wiod.AIR.diag_stressor('CH4')
+\end{lstlisting}
+
+and be reassigned to the aggregated WIOD system:
+\begin{lstlisting}
+wiod.CH4_source = diag_CH4
+\end{lstlisting}
+
+In the next step the automatic calculation routine of Pymrio is called again to compute the missing accounts in this new extension:
+
+\begin{lstlisting}
+wiod.calc_all()
+\end{lstlisting}
+
+The diagonalzied CH4 data now shows the source and destination of the specified stressor (CH\textsubscript{4}):
+\begin{lstlisting}
+wiod.CH4_source.D_cba
+\end{lstlisting}
+
+In this square consumption based accounts matrix, every column represents the amount of stressor occurring in each region - sector driven by the consumption stated in the column header. Conversely, each row states where the stressor impacts occurring in the row are distributed to (from where they are driven).
+
+If only one specific aspect of the source is of interest for the analysis, the footprint matrix can easily be aggregated with the standard Pandas {\it groupby} function.
+For example, to aggregate to the source and receiving region of the stressor:
+
+\begin{lstlisting}
+CH4_source_reg = wiod.CH4_source.D_cba.groupby(
+    level='region', axis=0).sum().groupby(
+    level='region', axis=1).sum()
+\end{lstlisting}
+
+Which can than be visualised using the seaborn heatmap \cite{waskom2017} with (Figure 3):
+
+\begin{lstlisting}
+import seaborn as sns
+CH4_source_reg.columns.name = 'Receiving region'
+CH4_source_reg.index.name = 'Souce region'
+sns.heatmap(CH4_source_reg, vmax=5E6, 
+            annot=True, cmap='YlOrRd', linewidths=0.1,
+            cbar_kws={'label': 'CH4 emissions ({})'.format(
+                wiod.CH4_source.unit.unit[0])})
+plt.show()
+\end{lstlisting}
+
+{\it --------- Figure 3 about here ---------}
+
+Storing the MRIO database can be done with 
+
+\begin{lstlisting}
+storage_path = '/tmp/wiod/aly'
+wiod.save_all(storage_path)
+\end{lstlisting}
+
+from where it can be received subsequently by:
+
+\begin{lstlisting}
+wiod = pymrio.load_all(storage_path)
+\end{lstlisting}
+
+The meta attribute of Pymrio mentioned at the beginning kept track of all modifications of the system.
+This can be shown with:
+
+\begin{lstlisting}
+wiod.meta
+\end{lstlisting}
+
+Custom notes can be added to the history with:
+\begin{lstlisting}
+wiod.meta.note("Custom note")
+\end{lstlisting}
+
+
+The history of the meta data can be filtered for specific entries like:
+
+\begin{lstlisting}
+wiod.meta.file_io_history
+\end{lstlisting}
+
+
+This tutorial gave a short overview about the basic functionality of Pymrio. 
+For more information about the capabilities of Pymrio check the online documentation at \url{http://Pymrio.readthedocs.io} \cite{stadler2018}
+
+\section*{Conclusions}
+
+Pymrio contains functionality aimed at professional MRIO analysts and sustainability scientist, but might be useful to anyone doing environmental and/or economic analysis. 
+As such, Pymrio is one key component in the Industrial Ecology analysis software framework \cite{pauliuk2015}.
+With the other components it shares the ambition to improve usability, interoperability, and collaboration between Industrial Ecology and sustainbility research Python packages.
+The main motiviation for starting the project was to enable a common interface for handling differrent MRIO databases, but through the years the scope extended to include visualization, reporting and data provenance tracking capabilities.
+Future development plans include further visualization possibilites, parser for additional MRIO models and extended analysis capabilites like structural decomposition and structural path analysis.
+Being an open source project, this includes an invitation to fellow researchers to join these coding efforts.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{backmatter}
+
+\section*{Competing interests}
+  The authors declare that they have no competing interests.
+
+\section*{Author's contributions}
+    KST developed Pymrio and wrote the article.
+
+\section*{Acknowledgements}
+Parts of the development of Pymrio was funded by the European Commission under the DESIRE Project (grant no.: 308552).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
+\bibliography{pymrio}      % Bibliography file (usually '*.bib' )
+% for author-year bibliography (bmc-mathphys or spbasic)
+% a) write to bib file (bmc-mathphys only)
+% @settings{label, options="nameyear"}
+% b) uncomment next line
+%\nocite{label}
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\section*{Figures}
+  \begin{figure}[h!]
+      \caption{\csentence{Class diagramm of the core Pymrio class.}
+      The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
+      \end{figure}
+
+  \begin{figure}[h!]
+      \caption{\csentence{CH\textsubscript{4} emissions of Germany (DEU), the UK (GBR), Rest of the EU and Other countries}
+      This figure was produced with Pymrio and matplotlib after aggregating the WIOD countries into the three regions specified above)}
+      \end{figure}
+
+  \begin{figure}[h!]
+      \caption{\csentence{CH\textsubscript{4} emissions source and destination}
+      A substantial share of CH\textsubscript{4} originating in the Rest of the World region are exported into Germany and the UK.
+      This figure was produced with Pymrio and seaborn. }
+      \end{figure}
+
+\end{backmatter}
+\end{document}
