@@ -6,6 +6,8 @@ Pymrio article
 
 This repo contains the latex version of the manuscript draft, figs and the Jupyter notebook for the supplements.
 
+Structure
+-----------
 
 The preprint can be found here
 
@@ -22,3 +24,8 @@ The original code repo for pymrio can be found at
 and the online documentation at
 
   * http://pymrio.readthedocs.io/en/latest/?badge=latest
+    
+Invitation for open review
+--------------------------
+
+Feel free to read the manuscript and comment on the text. Please use Github issues for any comments.
