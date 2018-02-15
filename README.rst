@@ -40,7 +40,6 @@ Developing branches
 
 For the currently ongoing work on building a sankey diagramm from the flows see
 
-  * `Interactive runable notebook <https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/sankey?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb>`_
   * `Static view on the notebook <https://github.com/konstantinstadler/pymrio_article/blob/sankey/notebook/pymrio-tutorial-for-wiod.ipynb>`_
 
 
