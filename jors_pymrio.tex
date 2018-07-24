@@ -1,42 +1,18 @@
-%% BioMed_Central_Tex_Template_v1.06
-%%                                      %
-%  bmc_article.tex            ver: 1.06 %
-%                                       %
+%% Journal of Open Research Software Latex template -- Created By Stephen Bonner and John Brennan, Durham Universtiy, UK.
 
-%%IMPORTANT: do not delete the first line of this template
-%%It must be present to enable the BMC Submission system to
-%%recognise this template!!
+\documentclass{jors}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                     %%
-%%  LaTeX template for BioMed Central  %%
-%%     journal article submissions     %%
-%%                                     %%
-%%          <8 June 2012>              %%
-%%                                     %%
-%%                                     %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Set the header information
+\pagestyle{fancy}
+\definecolor{mygray}{gray}{0.6}
+\renewcommand\headrule{}
+\rhead{\footnotesize 3}
+\rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
 
 
-%%% additional documentclass options:
-%  [doublespacing]
-%  [linenumbers]   - put the line numbers on margins
-
-%%% loading packages, author definitions
-
-%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
-\documentclass{bmcart}
-
-%%% Load packages
 \usepackage{amsthm,amsmath}
+\usepackage{graphicx}
 \usepackage{listings,url}
-%\RequirePackage{natbib}
-%\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
-%\RequirePackage{hyperref}
-\usepackage[utf8]{inputenc} %unicode support
-%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
-%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
-
 
 \lstset{language=Python}
 % additional python keywords
@@ -56,169 +32,45 @@
 %}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                             %%
-%%  If you wish to display your graphics for   %%
-%%  your own use using includegraphic or       %%
-%%  includegraphics, then comment out the      %%
-%%  following two lines of code.               %%
-%%  NB: These line *must* be included when     %%
-%%  submitting to BMC.                         %%
-%%  All figure files must be submitted as      %%
-%%  separate graphics through the BMC          %%
-%%  submission process, not included in the    %%
-%%  submitted article.                         %%
-%%                                             %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\includegraphic{}
-\def\includegraphics{}
-
-%%% Put your definitions there:
-\startlocaldefs
-\endlocaldefs
-
-
-%%% Begin ...
 \begin{document}
 
-%%% Start of article front matter
-\begin{frontmatter}
+{\bf Software paper for submission to the Journal of Open Research Software} \\
 
-\begin{fmbox}
-\dochead{Research}
+To complete this template, please replace the blue text with your own. The paper has three main sections: (1) Overview; (2) Availability; (3) Reuse potential. \\
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the title of your article here     %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Please submit the completed paper to: editor.jors@ubiquitypress.com
 
-\title{Pymrio - a Python based Multi-Regional Input-Output Analysis toolbox}
+\rule{\textwidth}{1pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the authors here                   %%
-%%                                          %%
-%% Specify information, if available,       %%
-%% in the form:                             %%
-%%   <key>={<id1>,<id2>}                    %%
-%%   <key>=                                 %%
-%% Comment or delete the keys which are     %%
-%% not used. Repeat \author command as much %%
-%% as required.                             %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{(1) Overview}
 
-%\author[
-   %addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
-   %corref={aff1},                       % id of corresponding address, if any
-   %%noteref={n1},                        % id's of article notes, if any
-   %email={konstantin.stadler@ntnu.no}   % email address
-%]{\inits{KST}\fnm{Konstantin} \snm{Stadler}}
+\vspace{0.5cm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the authors' addresses here        %%
-%%                                          %%
-%% Repeat \address commands as much as      %%
-%% required.                                %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Title}
 
-%\address[id=aff1]{%                           % unique id
-  %\orgname{Industrial Ecology Programme, Norwegian University of Science and Technology (NTNU)}
-  %\city{Trondheim},                              % city
-  %\cny{Norway}                                    % country
-%}
+Pymrio - a Python based Multi-Regional Input-Output Analysis toolbox
 
+\section*{Paper Authors}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter short notes here                   %%
-%%                                          %%
-%% Short notes will be after addresses      %%
-%% on first page.                           %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{1. Stadler, Konstantin
 
-%\begin{artnotes}
-%%\note{Sample of title note}     % note to the article
-%\note[id=n1]{Equal contributor} % note, connected to author
-%\end{artnotes}
+\section*{Paper Author Roles and Affiliations}
+Developer of Pymrio, Industrial Ecology Programme, Norwegian University of Science and Technology (NTNU)
 
-\end{fmbox}% comment this for two column layout
+\section*{Abstract}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% The Abstract begins here                 %%
-%%                                          %%
-%% Please refer to the Instructions for     %%
-%% authors on http://www.biomedcentral.com  %%
-%% and include the section headings         %%
-%% accordingly for your article type.       %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{abstractbox}
-
-\begin{abstract} % abstract
 
 Pymrio is an open source tool for Environmentally Extended Multi-Regional Input-Output (EE MRIO) analysis developed in Python.
 It provides a high-level abstraction layer for global EE MRIO databases in order to simplify common EE MRIO data tasks. 
 Among others, Pymrio includes automatic download functions and parsers for several openly available EE MRIO databases (EXIOBASE 1 and 2, WIOD, Eora26) as well as methods for production and consumption based accounts calculation, aggregation, stressor origin estimation and visualization. 
 The use of a consistent storage format including meta data and modification history for MRIOs allows to exchange data with other analysis tools, aiming for an increased interoperability of Industrial Ecology analysis software.
 
-\end{abstract}
+\section*{Keywords}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% The keywords begin here                  %%
-%%                                          %%
-%% Put each keyword in separate \kwd{}.     %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sustainability Analysis; Multi Regional Input Output Analysisi; Footprinting, Consumption Based Accounting
 
-\begin{keyword}
-\kwd{MRIO}
-\kwd{Open Source}
-\kwd{Software}
-\kwd{Multi Regional Input Output Analysis}
-\end{keyword}
-
-\end{abstractbox}
-%
-%\end{fmbox}% uncomment this for twcolumn layout
-
-\end{frontmatter}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% The Main Body begins here                %%
-%%                                          %%
-%% Please refer to the instructions for     %%
-%% authors on:                              %%
-%% http://www.biomedcentral.com/info/authors%%
-%% and include the section headings         %%
-%% accordingly for your article type.       %%
-%%                                          %%
-%% See the Results and Discussion section   %%
-%% for details on how to create sub-sections%%
-%%                                          %%
-%% use \cite{...} to cite references        %%
-%%  \cite{koon} and                         %%
-%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
-%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
-% <put your article body there>
-
-%%%%%%%%%%%%%%%%
-%% Background %%
-%%
 \section*{Introduction}
+
 Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions.
 The analysis of the these tables have become the prevailing methodology in Industrial Ecology and sustainability science to evaluate environmental impacts of globally spanning supply chains in order to calculate the footprints of countries, regions and persons \cite{davis2010a,ivanova2017,tukker2016,verones2015}.
 
@@ -237,7 +89,8 @@ Here I present the open source tool Pymrio, a Python 3 package, which aims to cl
 The article proceeds with a description of the architecture of Pymrio, including the mathematical background and implementation details. Afterwards, a short tutorial with a simple use case for Pymrio is given. 
 Some future development plans are pointed out in the conclusion.
 
-\section*{Architecture}
+
+\section*{Implementation and architecture}
 
 \subsection*{Mathematical Background}
 
@@ -359,7 +212,7 @@ other countries is given by:
 
 
 \subsubsection*{Aggregation}
-
+\textcolor{blue}{
 For the aggregation of the MRIO system the matrix $S_k$ defines
 the aggregation matrix for regions and $S_n$ the aggregation matrix
 for sectors.
@@ -418,14 +271,20 @@ and stressors occuring during final demand by
     FY_{agg} = FY(S_k \otimes \mathrm{I})^\mathrm{T}
 \end{equation}
 
+}
 
 \subsection*{Implementation}
+
 
 The main design principle of Pymrio is based on the idea that an EE MRIO systems can be effectively represented as an object in an Object Oriented Programming (OOP) language.
 In Pymrio, such an EE MRIO object consists of a core component describing the economic relationships grouped with a various number of components describing the environmental and/or social extensions (satellite accounts, see Figure 1). 
 All components of the main object are in turn represented as objects, allowing to implement specific methods for each sub-component.
 
-{\it --------- Figure 1 about here ---------}
+\begin{figure}[h!]
+  \includegraphics[width=.9\textwidth]{./fig/IOSystem.png}
+  \caption{\csentence{Class diagramm of the core Pymrio class.}
+  The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
+  \end{figure}
 
 This architecture described above was implemented in Python 3.5.
 The various tables of the MRIO system are stored in Pandas DataFrames \cite{mckinney2010}, therefore building upon a well-tested data-science framework.
@@ -437,6 +296,7 @@ together with an extensive documentation and tutorials.
 Pymrio is openly available under the GNU General Public License v3.0.
 
 \subsection*{Parsing and Storage}
+
 To date, no standard way of storing MRIO databases has been defined.
 For example, the WIOD database is provided as xlsx tables, whereas Eora and EXIOBASE use (compressed) csv tables.
 For the two latter, however, the approach differs as Eora26 used pure numerical tables with separate files describing the headers, whereas EXIOBASE use csv tables which include the headers.
@@ -448,8 +308,7 @@ Using the common json file format for storing the file meta data  allows to easi
 By default, each tables is stored as a tab-separated text file format, including row and column headers.
 The folder with the economic core also contains a file metadata.json which stores information on version, name and system (industry by industry or product by product) as well as a record of modifications to the particular MRIO system (including when it was downloaded, any aggregations, removal/addition of extensions, etc.). 
 
-
-\section*{Usage}
+\subsection*{Usage}
 
 The following section provides a quick start guide for using Pymrio beginning at the installation followed by a basic input-output calculation example.
 For the example here, the WIOD MRIO database \cite{timmer2015} is used. 
@@ -562,7 +421,13 @@ with plt.style.context('ggplot'):
 \end{lstlisting}
 
 
-{\it --------- Figure 2 about here ---------}
+  \begin{figure}[h!]
+      \includegraphics[width=.9\textwidth]{./fig/airch4.png}
+      \caption{\csentence{CH\textsubscript{4} emissions of Germany (DEU), the UK (GBR), Rest of the EU and Other countries}
+      This figure was produced with Pymrio and matplotlib after aggregating the WIOD countries into the three regions specified above)}
+      \end{figure}
+
+
 
 To calculate the source (in terms of regions and sectors) of a certain stressor or impact driven by consumption, one needs to diagonalize this stressor/impact. 
 
@@ -611,7 +476,13 @@ sns.heatmap(CH4_source_reg, vmax=5E6,
 plt.show()
 \end{lstlisting}
 
-{\it --------- Figure 3 about here ---------}
+  \begin{figure}[h!]
+      \includegraphics[width=.9\textwidth]{./fig/airch4_source_reg.png}
+      \caption{\csentence{CH\textsubscript{4} emissions source and destination}
+      A substantial share of CH\textsubscript{4} originating in the Rest of the World region are exported into Germany and the UK.
+      This figure was produced with Pymrio and seaborn. }
+      \end{figure}
+
 
 Storing the MRIO database can be done with 
 
@@ -651,7 +522,76 @@ For more information about the capabilities of Pymrio check the online documenta
 \url{http://pymrio.readthedocs.io} 
 \cite{stadler2018}
 
-\section*{Conclusions}
+
+
+\section*{Quality control}
+
+
+Travis, pytest 
+Detail the level of testing that has been carried out on the code (e.g. unit, functional, load etc.), and in which environments. If not already included in the software documentation, provide details of how a user could quickly understand if the software is working (e.g. providing examples of running the software with sample input and output data). }
+
+\section*{(2) Availability}
+\vspace{0.5cm}
+\section*{Operating system}
+
+\textcolor{blue}{GNU/Linux, Mac OSX, Windows and any other operating systems running Python.}
+
+\section*{Programming language}
+
+\textcolor{blue}{Please include minimum version compatibility.
+As tested in Travis, note that the main dependency is pandas and new features are developed against the newest version of pandas
+}
+
+\section*{Additional system requirements}
+
+\textcolor{blue}{E.g. memory, disk space, processor, input devices, output devices., testsystem should run on every computer capabable of running python, further requriments depend on the database to be analysed, for EXIOBASE minimum of 8 GB of RAM}
+
+\section*{Dependencies}
+
+\textcolor{blue}{E.g. libraries, frameworks, incl. minimum version compatibility.}
+
+\section*{List of contributors}
+
+\textcolor{blue}{Please list anyone who helped to create the software (who may also not be an author of this paper), including their roles and affiliations.}
+
+\section*{Software location:}
+
+{\bf Archive} \textcolor{blue}{(e.g. institutional repository, general repository) (required – please see instructions on journal website for depositing archive copy of software in a suitable repository)} 
+
+\begin{description}[noitemsep,topsep=0pt]
+	\item[Name:] \textcolor{blue}{The name of the archive.}
+	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
+	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
+	\item[Publisher:]  \textcolor{blue}{Name of the person who deposited the software.}
+	\item[Version published:] \textcolor{blue}{The version number of the software archived.}
+	\item[Date published:] \textcolor{blue}{dd/mm/yy}
+\end{description}
+
+
+
+{\bf Code repository} \textcolor{blue}{(e.g. SourceForge, GitHub etc.) (required)}
+
+\begin{description}[noitemsep,topsep=0pt]
+	\item[Name:] \textcolor{blue}{The name of the archive.}
+	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
+	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
+	\item[Date published:] \textcolor{blue}{dd/mm/yy}
+\end{description}
+
+{\bf Emulation environment} \textcolor{blue}{(if appropriate)}
+
+\begin{description}[noitemsep,topsep=0pt]
+	\item[Name:] \textcolor{blue}{The name of the archive.}
+	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
+	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
+	\item[Date published:] \textcolor{blue}{dd/mm/yy}
+\end{description}
+
+\section*{Language}
+
+\textcolor{blue}{Language of repository, software and supporting files.}
+
+\section*{(3) Reuse potential}
 
 Pymrio contains functionality aimed at professional MRIO analysts and sustainability scientist, but might be useful to anyone doing environmental and/or economic analysis. 
 As such, Pymrio is one key component in the Industrial Ecology analysis software framework \cite{pauliuk2015}.
@@ -661,82 +601,45 @@ Future development plans include further visualization possibilites, parser for 
 Being an open source project, this includes an invitation to fellow researchers to join these coding efforts.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Backmatter begins here                   %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{backmatter}
-
-\section*{Competing interests}
-  The authors declare that they have no competing interests.
-
-\section*{Author's contributions}
-    %KST developed Pymrio and wrote the article.
+\textcolor{blue}{Please describe in as much detail as possible the ways in which the software could be reused by other researchers both within and outside of your field. This should include the use cases for the software, and also details of how the software might be modified or extended (including how contributors should contact you) if appropriate. Also you must include details of what support mechanisms are in place for this software (even if there is no support).}
 
 \section*{Acknowledgements}
+
+\textcolor{blue}{Please add any relevant acknowledgements to anyone else who supported the project in which the software was created, but did not work directly on the software itself.}
+
+Discussions with Thomas, Guillaume, Richard Wood for introduction to IO
+
+\section*{Funding statement}
+
 Parts of the development of Pymrio was funded by the European Commission under the DESIRE Project (grant no.: 308552).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                  The Bibliography                       %%
-%%                                                         %%
-%%  Bmc_mathpys.bst  will be used to                       %%
-%%  create a .BBL file for submission.                     %%
-%%  After submission of the .TEX file,                     %%
-%%  you will be prompted to submit your .BBL file.         %%
-%%                                                         %%
-%%                                                         %%
-%%  Note that the displayed Bibliography will not          %%
-%%  necessarily be rendered by Latex exactly as specified  %%
-%%  in the online Instructions for Authors.                %%
-%%                                                         %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Competing interests}
 
-% if your bibliography is in bibtex format, use those commands:
-\bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
-\bibliography{pymrio}      % Bibliography file (usually '*.bib' )
-% for author-year bibliography (bmc-mathphys or spbasic)
-% a) write to bib file (bmc-mathphys only)
-% @settings{label, options="nameyear"}
-% b) uncomment next line
-%\nocite{label}
+\textcolor{blue}{The authors declare that they have no competing interests.}
 
-% or include bibliography directly:
-% \begin{thebibliography}
-% \bibitem{b1}
-% \end{thebibliography}
+\section*{References}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Figures                       %%
-%%                               %%
-%% NB: this is for captions and  %%
-%% Titles. All graphics must be  %%
-%% submitted separately and NOT  %%
-%% included in the Tex document  %%
-%%                               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textcolor{blue}{TODO: copy paste as numbers before submission}
 
-%%
-%% Do not use \listoffigures as most will included as separate files
+\bibliographystyle{vancouver}
+\bibliography{bibpymrio}      % Bibliography file (usually '*.bib' )
 
-\section*{Figures}
-  \begin{figure}[h!]
-      \caption{\csentence{Class diagramm of the core Pymrio class.}
-      The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
-      \end{figure}
+\textcolor{blue}{Please enter references in the Harvard style and include a DOI where available, citing them in the text with a number in square brackets, e.g. \\ }
 
-  \begin{figure}[h!]
-      \caption{\csentence{CH\textsubscript{4} emissions of Germany (DEU), the UK (GBR), Rest of the EU and Other countries}
-      This figure was produced with Pymrio and matplotlib after aggregating the WIOD countries into the three regions specified above)}
-      \end{figure}
+\textcolor{blue}{[1] Piwowar, H A 2011 Who Shares? Who Doesn't? Factors Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI: \\ http://dx.doi.org/10.1371/journal.pone.0018657.}
 
-  \begin{figure}[h!]
-      \caption{\csentence{CH\textsubscript{4} emissions source and destination}
-      A substantial share of CH\textsubscript{4} originating in the Rest of the World region are exported into Germany and the UK.
-      This figure was produced with Pymrio and seaborn. }
-      \end{figure}
+\vspace{2cm}
 
-\end{backmatter}
+\rule{\textwidth}{1pt}
+
+{ \bf Copyright Notice} \\
+Authors who publish with this journal agree to the following terms: \\
+
+Authors retain copyright and grant the journal right of first publication with the work simultaneously licensed under a  \href{http://creativecommons.org/licenses/by/3.0/}{Creative Commons Attribution License} that allows others to share the work with an acknowledgement of the work's authorship and initial publication in this journal. \\
+
+Authors are able to enter into separate, additional contractual arrangements for the non-exclusive distribution of the journal's published version of the work (e.g., post it to an institutional repository or publish it in a book), with an acknowledgement of its initial publication in this journal. \\
+
+By submitting this paper you agree to the terms of this Copyright Notice, which will apply to this submission if and when it is published by this journal.
+
 \end{document}
