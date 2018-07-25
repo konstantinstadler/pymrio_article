@@ -285,7 +285,7 @@ All components of the main object are in turn represented as objects, allowing t
 
 \begin{figure}[h!]
   \includegraphics[width=.9\textwidth]{./fig/IOSystem.png}
-  \caption{\csentence{Class diagramm of the core Pymrio class.}
+  \caption{\textbf{Class diagramm of the core Pymrio class.}
   The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
   \end{figure}
 
@@ -317,7 +317,7 @@ The following section provides a quick start guide for using Pymrio beginning at
 For the example here, the WIOD MRIO database \cite{timmer2015} is used. 
 However, after downloading and parsing the database the same methods are available for any EE MRIO system.
 
-The code examples here are included as interactive Jupyter notebook tutorial in the SI.
+The code examples here are included as interactive Jupyter notebook  tutorial in the SI.
 As the code example here only show the code inputs, refer to the notebook to see the output of a specific command. 
 An cloud-based virtual environment with the code example is available at \url{https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}.
 
@@ -426,7 +426,7 @@ with plt.style.context('ggplot'):
 
   \begin{figure}[h!]
       \includegraphics[width=.9\textwidth]{./fig/airch4.png}
-      \caption{\csentence{CH\textsubscript{4} emissions of Germany (DEU), the UK (GBR), Rest of the EU and Other countries}
+      \caption{\textbf{CH\textsubscript{4} emissions of Germany (DEU), the UK (GBR), Rest of the EU and Other countries}
       This figure was produced with Pymrio and matplotlib after aggregating the WIOD countries into the three regions specified above)}
       \end{figure}
 
@@ -481,7 +481,7 @@ plt.show()
 
   \begin{figure}[h!]
       \includegraphics[width=.9\textwidth]{./fig/airch4_source_reg.png}
-      \caption{\csentence{CH\textsubscript{4} emissions source and destination}
+      \caption{\textbf{CH\textsubscript{4} emissions source and destination}
       A substantial share of CH\textsubscript{4} originating in the Rest of the World region are exported into Germany and the UK.
       This figure was produced with Pymrio and seaborn. }
       \end{figure}
@@ -529,36 +529,36 @@ For more information about the capabilities of Pymrio check the online documenta
 
 \section*{Quality control}
 
+All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit tested against published textbook results derived from a classic input-output textbook \cite{miller2009}.
+Additional unit tests validate various components of the aggregation, file IO and other utility methods.
+Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package.
 
-Detail the level of testing that has been carried out on the code (e.g. unit, functional, load etc.), and in which environments. If not already included in the software documentation, provide details of how a user could quickly understand if the software is working (e.g. providing examples of running the software with sample input and output data). }
+All tests are implemented in pytest \cite{krekl2017} and users can verify the correctness of Pymrio, after installing pytest, by
 
-points
+\begin{lstlisting}
+py.test -v
+\end{lstlisting}
 
-Issue driven development
-pytest, with automatic travis. Importantly all mathematical functionality is unit tested
-Travis 
-pep8 (required to pass tests before merging pull requests)
-numpy style docstrings
-test mrio system distributed with the source code, allowing to reproduce the tutorials given in the docuementation
+in the root of the local copy of Pymrio.
 
-AFAP: Since pymrio is already used in research projects, please aim for keeping compatibility with previous versions.
+In addition, Pymrio uses the continous integration platform Travis CI \cite{travis2018} for automatic testing after each change of the code base uploaded to the source repository. 
 
-For collaborators, these points are outlined in the Contribution section of the documentation - TODO: readme as reference
+The Pymrio source code follows the pep8 specifications \cite{rossuml2017}; accordance with this code standard is also tested through Travis CI integration.
 
-text pieces:
+The Pymrio documentation is build using the Sphinx Python Documentation Generator \cite{brandl2018} and hosted on readthedocs (\url{http://pymrio.readthedocs.io}).
 
-To insure a functional master branch of Pymrio, a continuous integration platform run by Travis CI builds the package from source and runs the unit tests upon each commit. These same checks are run on pull requests submitted by contributors. These also check pep8 ...  If these tests fail, the developers are notified so that modifications to the code can be made to fix these issues prior to merging the changes into Pymrio.
+After each change to the master branch, the API references in the documentation are automatically updated based on the description provided in the numpy style docstrings, thus keeping the documentation and code base in sync.
+Furthermore, the code examples and tutorials given the in the documentation are implemented as Jupyter notebooks \cite{kluyver2016} and are recalculated for each release, thus also serving as regression tests for the documented Pymrio functionality.
 
-Documentation is is built using the Sphinx documentation generator [22] that creates the HTML documentation, hosted on readthedocs. 
-This documentation is autoamtically build (ensure that code and documentation is in sync) and includes a full API reference based on the information provided in the docstrings. 
-The examples and tutorials given the in the documentation are based on Jupyter notebooks which are recalculated for each release, thus also serving as a regression test for documented Pymrio functionality.
+Updated results of the Travis CI tests as well as the Sphinx documentation rebuild are indicated at the beginning of the readme file at the source repository. 
 
+Contributors to the Pymrio code based are advised to adhere to the testing and code standards established for Pymrio. Further details can be found in the Contribution section of the documentation. 
 
 \section*{(2) Availability}
 \vspace{0.5cm}
 \section*{Operating system}
 
-\textcolor{blue}{GNU/Linux, Mac OSX, Windows and any other operating systems running Python.}
+\textcolor{blue}{GNU/Linux, Mac OSX, Windows and any other operating systems running Python with the SciPy stack.}
 
 \section*{Programming language}
 
@@ -640,18 +640,12 @@ Parts of the development of Pymrio was funded by the European Commission under t
 
 \section*{Competing interests}
 
-\textcolor{blue}{The authors declare that they have no competing interests.}
+The authors declare that they have no competing interests.
 
 \section*{References}
 
-\textcolor{blue}{TODO: copy paste as numbers before submission}
-
 \bibliographystyle{bmc-mathphys}
-\bibliography{bibpymrio}      % Bibliography file (usually '*.bib' )
-
-\textcolor{blue}{Please enter references in the Harvard style and include a DOI where available, citing them in the text with a number in square brackets, e.g. \\ }
-
-\textcolor{blue}{[1] Piwowar, H A 2011 Who Shares? Who Doesn't? Factors Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI: \\ http://dx.doi.org/10.1371/journal.pone.0018657.}
+\bibliography{bibpymrio}  
 
 \vspace{2cm}
 
