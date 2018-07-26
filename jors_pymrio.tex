@@ -215,7 +215,7 @@ other countries is given by:
 
 
 \subsubsection*{Aggregation}
-\textcolor{blue}{
+
 For the aggregation of the MRIO system the matrix $S_k$ defines
 the aggregation matrix for regions and $S_n$ the aggregation matrix
 for sectors.
@@ -558,21 +558,36 @@ Contributors to the Pymrio code based are advised to adhere to the testing and c
 \vspace{0.5cm}
 \section*{Operating system}
 
-\textcolor{blue}{GNU/Linux, Mac OSX, Windows and any other operating systems running Python with the SciPy stack.}
+GNU/Linux, Mac OSX, Windows and any other operating systems running Python with the SciPy stack.
 
 \section*{Programming language}
 
-\textcolor{blue}{Please include minimum version compatibility.
-As tested in Travis, note that the main dependency is pandas and new features are developed against the newest version of pandas
-}
+Pymrio was built in Python 3 and currently (Pymrio version 0.3.6) tested for Python 3.5 and 3.6.
+
+
 
 \section*{Additional system requirements}
 
-\textcolor{blue}{E.g. memory, disk space, processor, input devices, output devices., testsystem should run on every computer capabable of running python, further requriments depend on the database to be analysed, for EXIOBASE minimum of 8 GB of RAM}
-
+Pymrio runs on every system capable of running the Python SciPy stack.
+The actual memory requirments depend on the MRIO database to be analysed with Pymrio. For example, for EXIOBASE a minimum of 8 GB RAM are required. 
+TODO cITE EXIOBASE 3, also in the rest of the text
 \section*{Dependencies}
 
-\textcolor{blue}{E.g. libraries, frameworks, incl. minimum version compatibility.}
+For the current Pymrio version 0.3.6:
+
+\begin{itemize}
+    \item pandas $\ge$ 0.22.0
+    \item numpy $\ge$ 0.12.0
+    \item matplotlib $\ge$ 2.0.0
+    \item requests $\ge$ 2.18
+    \item xlrd $\ge$ 1.1.0 
+\end{itemize}
+
+The main dependency of Pymrio is Pandas and future versions of Pymrio will follow the developmental changes in Pandas.
+
+The file requirments.txt in the source repository \url{https://github.com/konstantinstadler/pymrio/blob/master/requirements.txt} contains an up-to-date list of all requirements.
+
+For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-pep8 are required.
 
 \section*{List of contributors}
 
@@ -613,7 +628,7 @@ As tested in Travis, note that the main dependency is pandas and new features ar
 
 \section*{Language}
 
-\textcolor{blue}{Language of repository, software and supporting files.}
+English
 
 \section*{(3) Reuse potential}
 
