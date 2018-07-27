@@ -59,7 +59,6 @@ Developer of Pymrio, Industrial Ecology Programme, Norwegian University of Scien
 
 \section*{Abstract}
 
-
 Pymrio is an open source tool for Environmentally Extended Multi-Regional Input-Output (EE MRIO) analysis developed in Python.
 It provides a high-level abstraction layer for global EE MRIO databases in order to simplify common EE MRIO data tasks. 
 Among others, Pymrio includes automatic download functions and parsers for several openly available EE MRIO databases (EXIOBASE 1 and 2, WIOD, Eora26) as well as methods for production and consumption based accounts calculation, aggregation, stressor origin estimation and visualization. 
@@ -67,7 +66,7 @@ The use of a consistent storage format including meta data and modification hist
 
 \section*{Keywords}
 
-Sustainability Analysis; Multi Regional Input Output Analysisi; Footprinting, Consumption Based Accounting
+Sustainability Analysis; Multi Regional Input Output Analysis; Footprinting, Consumption Based Accounting
 
 \section*{Introduction}
 
@@ -100,7 +99,7 @@ The reuse potential and future development plans are pointed out at the end of t
 This section gives an overview about the mathematical background in Pymrio. 
 
 Generally, mathematical routines implemented in Pymrio follow the equations described below.
-If, however, a more efficient mechanism was available this was prefered.
+If, however, a more efficient mechanism was available this was preferred.
 In this cases the original formula remains as comment in the source code.
 This was generally the case when numpy broadcasting \cite{vanderwalt2011} was available for a specific operation, resulting in a substantial speed up of the calculations.
 
@@ -589,41 +588,36 @@ The file requirments.txt in the source repository \url{https://github.com/konsta
 
 For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-pep8 are required.
 
-\section*{List of contributors}
-
-\textcolor{blue}{Please list anyone who helped to create the software (who may also not be an author of this paper), including their roles and affiliations.}
-
 \section*{Software location:}
 
-{\bf Archive} \textcolor{blue}{(e.g. institutional repository, general repository) (required – please see instructions on journal website for depositing archive copy of software in a suitable repository)} 
+{\bf Archive} 
 
 \begin{description}[noitemsep,topsep=0pt]
-	\item[Name:] \textcolor{blue}{The name of the archive.}
-	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
-	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
-	\item[Publisher:]  \textcolor{blue}{Name of the person who deposited the software.}
-	\item[Version published:] \textcolor{blue}{The version number of the software archived.}
-	\item[Date published:] \textcolor{blue}{dd/mm/yy}
+	\item[Name:] Zenodo
+    \item[Persistent identifier:] \url{https://doi.org/10.5281/zenodo.1146054}
+	\item[Licence:] GPL v3
+	\item[Publisher:]  Konstantin Stadler
+    \item[Version published:] 0.3.6 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
+	\item[Date published:] 12/03/18
 \end{description}
 
 
-
-{\bf Code repository} \textcolor{blue}{(e.g. SourceForge, GitHub etc.) (required)}
+{\bf Code repository} 
 
 \begin{description}[noitemsep,topsep=0pt]
-	\item[Name:] \textcolor{blue}{The name of the archive.}
-	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
-	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
-	\item[Date published:] \textcolor{blue}{dd/mm/yy}
+    \item[Name:] Github (Pymrio is also hosted on pypi and anaconda cloud)
+    \item[Persistent identifier:] \url{https://github.com/konstantinstadler/pymrio}
+	\item[Licence:] GPL v3
+	\item[Date published:] 12/03/18
 \end{description}
 
-{\bf Emulation environment} \textcolor{blue}{(if appropriate)}
+{\bf Emulation environment} 
 
 \begin{description}[noitemsep,topsep=0pt]
-	\item[Name:] \textcolor{blue}{The name of the archive.}
-	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
-	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
-	\item[Date published:] \textcolor{blue}{dd/mm/yy}
+	\item[Name:] MyBinder Jupyter Notebook of the tutorial included above
+    \item[Persistent identifier:] \url{https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}
+        \item[Licence:] CC BY 4.0 (TODO - identifier in Binder Notebook) 
+	\item[Date published:] 18/01/18
 \end{description}
 
 \section*{Language}
@@ -634,12 +628,13 @@ English
 
 Pymrio contains functionality aimed at professional MRIO analysts and sustainability scientist, but might be useful to anyone doing environmental and/or economic analysis. 
 As such, Pymrio is one key component in the Industrial Ecology analysis software framework \cite{pauliuk2015}.
-With the other components it shares the ambition to improve usability, interoperability, and collaboration between Industrial Ecology and sustainbility research Python packages.
-The main motiviation for starting the project was to enable a common interface for handling differrent MRIO databases, but through the years the scope extended to include visualization, reporting and data provenance tracking capabilities.
-Future development plans include further visualization possibilites, parser for additional MRIO models and extended analysis capabilites like structural decomposition and structural path analysis.
+With the other components it shares the ambition to improve usability, interoperability, and collaboration between Industrial Ecology and sustainability research Python packages.
+The main motivation for starting the project was to enable a common interface for handling different MRIO databases, but through the years the scope extended to include visualization, reporting and data provenance tracking capabilities.
+Future development plans include further visualization possibilities, parser for additional MRIO models and extended analysis capabilities like structural decomposition and structural path analysis.
 Being an open source project, this includes an invitation to fellow researchers to join these coding efforts.
 
-
+Further points:
+For collaboratours: See readme section, Issue driven (should be also in the section), general use - specific packages for a certain mrio build upon pymrio but not include in the core functionality; for the readme: functions need to have a numpy docstring + new functionality must be documented (for readthedocs, I can help if you have any questions how to do that)
 
 \textcolor{blue}{Please describe in as much detail as possible the ways in which the software could be reused by other researchers both within and outside of your field. This should include the use cases for the software, and also details of how the software might be modified or extended (including how contributors should contact you) if appropriate. Also you must include details of what support mechanisms are in place for this software (even if there is no support).}
 
@@ -647,7 +642,7 @@ Being an open source project, this includes an invitation to fellow researchers 
 
 \textcolor{blue}{Please add any relevant acknowledgements to anyone else who supported the project in which the software was created, but did not work directly on the software itself.}
 
-Discussions with Thomas, Guillaume, Richard Wood for introduction to IO
+Discussions with all persons helping the development by issues, Guillaume for helpful discussions on Python, open source and version control, Richard Wood for introduction to IO
 
 \section*{Funding statement}
 
