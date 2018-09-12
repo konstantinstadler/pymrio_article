@@ -61,12 +61,12 @@ Developer of Pymrio, Industrial Ecology Programme, Norwegian University of Scien
 
 Pymrio is an open source tool for Environmentally Extended Multi-Regional Input-Output (EE MRIO) analysis developed in Python.
 It provides a high-level abstraction layer for global EE MRIO databases in order to simplify common EE MRIO data tasks. 
-Among others, Pymrio includes automatic download functions and parsers for several openly available EE MRIO databases (EXIOBASE 1 and 2, WIOD, Eora26) as well as methods for production and consumption based accounts calculation, aggregation, stressor origin estimation and visualization. 
+Among others, Pymrio includes parsers for several openly available EE MRIO databases (EXIOBASE v1 - v3, WIOD, Eora26) as well as methods for production and consumption based accounts calculation, aggregation, stressor origin estimation and visualization. 
 The use of a consistent storage format including meta data and modification history for MRIOs allows to exchange data with other analysis tools, aiming for an increased interoperability of Industrial Ecology analysis software.
 
 \section*{Keywords}
 
-Sustainability Analysis; Multi Regional Input Output Analysis; Footprinting, Consumption Based Accounting
+Sustainability Analysis; Multi Regional Input Output Analysis; Footprinting, Consumption Based Accounting, EXIOBASE, WIOD, Eora26, Python
 
 \section*{Introduction}
 
@@ -288,7 +288,7 @@ All components of the main object are in turn represented as objects, allowing t
   The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
   \end{figure}
 
-This architecture described above was implemented in Python 3.5.
+This architecture described above was implemented in Python 3.6.
 The various tables of the MRIO system are stored in Pandas DataFrames \cite{mckinney2010}, therefore building upon a well-tested data-science framework.
 As a consequence, besides the specific methods implemented by Pymrio, the full functionality of Pandas and the underlying numpy framework \cite{vanderwalt2011} can be used to modify the MRIO data.
 
@@ -528,7 +528,7 @@ For more information about the capabilities of Pymrio check the online documenta
 
 \section*{Quality control}
 
-All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit tested against published textbook results derived from a classic input-output textbook \cite{miller2009}.
+All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit tested against published results extracted from a classic input-output textbook \cite{miller2009}.
 Additional unit tests validate various components of the aggregation, file IO and other utility methods.
 Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package.
 
@@ -542,7 +542,7 @@ in the root of the local copy of Pymrio.
 
 In addition, Pymrio uses the continous integration platform Travis CI \cite{travis2018} for automatic testing after each change of the code base uploaded to the source repository. 
 
-The Pymrio source code follows the pep8 specifications \cite{rossuml2017}; accordance with this code standard is also tested through Travis CI integration.
+The Pymrio source code follows the pep8 specifications \cite{rossuml2017}; accordance with this code standard is also tested through Travis CI integration. This implies, that any code contribution to Pymrio must follow the pep8 guidelines.
 
 The Pymrio documentation is build using the Sphinx Python Documentation Generator \cite{brandl2018} and hosted on readthedocs (\url{http://pymrio.readthedocs.io}).
 
@@ -561,8 +561,7 @@ GNU/Linux, Mac OSX, Windows and any other operating systems running Python with 
 
 \section*{Programming language}
 
-Pymrio was built in Python 3 and currently (Pymrio version 0.3.6) tested for Python 3.5 and 3.6.
-
+Pymrio was built in Python 3 and currently (Pymrio version 0.3.6) tested for Python 3.6 (TODO 3.7?)
 
 
 \section*{Additional system requirements}
