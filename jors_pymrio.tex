@@ -70,25 +70,18 @@ Sustainability Analysis; Multi Regional Input Output Analysis; Footprinting, Con
 
 \section*{Introduction}
 
-Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions.
-
-The analysis of the these tables have become the prevailing methodology in Industrial Ecology and sustainability science to evaluate globally spanning supply chains in order to calculate the environmental and social consequences of trade and consumption \cite{davis2010a,ivanova2017,tukker2016,verones2015,wood2018,wood2018a}.
+Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions. The analysis of the these tables have become the prevailing methodology in Industrial Ecology and sustainability science to evaluate globally spanning supply chains in order to calculate the environmental and social consequences of trade and consumption \cite{davis2010a,ivanova2017,tukker2016,verones2015,wood2018,wood2018a}.
 
 In contrast to other Industrial Ecology methodologies like 
 Life Cycle Assessment (e.g. Brightway \cite{mutel2017} or openLCA \cite{openlca2018})
 or Material Flow Analysis (e.g. STAN \cite{cencic2008}), 
-few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015}.  
+few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015}. One of the very few well documented and stand alone packages for IO analysis, PyIO \cite{nazara2003}, has not been updated since 2011. Another framework, the MRIOLab suite \cite{geschke2017,lenzen2017} takes a different approach: it provides a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. The MRIOLab also includes functions for MRIO analysis. However, the MRIOLab suite is not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since these can not fully reproduced within the MRIOLab \cite{rahman2017,reyes2017}.
 
-One of the very few well documented and stand alone packages for IO analysis, PyIO \cite{nazara2003}, has not been updated since 2011.
-
-The MRIOLab suite \cite{geschke2017,lenzen2017} takes a different approach, providing a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. In addition, the MRIOLab also includes functions for MRIO analysis.
-
-However, the MRIOLab suite is not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since these can not fully reproduced within the MRIOLab \cite{rahman2017,reyes2017}.
-
-As a consequence, MRIO analysis today relies on often ad-hoc produced scripts and analysis functions, hindering reproducibility of results and reuse of previous coding efforts.
+As a consequence of the lack of a generic MRIO analysis toolkit, MRIO analysis today relies on often ad-hoc produced scripts and functions. This hinders reproducibility of results and the reuse of previous coding efforts.
 Here I present the open source tool Pymrio, a Python 3 package, which aims to close this method gap for EE MRIO analysis.
 
-The article proceeds with a description of the architecture of Pymrio, including the mathematical background and implementation details. This is followed by  a short tutorial with a simple use case for Pymrio is given. 
+The article proceeds with a description of the architecture of Pymrio, including the mathematical background and implementation details. 
+This is followed by a short tutorial with a simple use case for Pymrio is given. This tutorial is also available as an IPython notebook. 
 The reuse potential and future development plans are pointed out at the end of the article.
 
 
@@ -293,22 +286,21 @@ The various tables of the MRIO system are stored in Pandas DataFrames \cite{mcki
 As a consequence, besides the specific methods implemented by Pymrio, the full functionality of Pandas and the underlying numpy framework \cite{vanderwalt2011} can be used to modify the MRIO data.
 
 Methods implemented in Pymrio which go beyond basic Pandas functionality are accompanied by a corresponding test harness which ensures the formal correctness of the method.
-The full source code is hosted on a public code repository \cite{stadler2018a} 
-together with an extensive documentation and tutorials.  
+The full source code is hosted on a public code repository together with an extensive documentation and tutorials \url{https://github.com/konstantinstadler/pymrio}.  
 Pymrio is openly available under the GNU General Public License v3.0.
 
 \subsection*{Parsing and Storage}
 
 To date, no standard way of storing MRIO databases has been defined.
-For example, the WIOD database is provided as xlsx tables, whereas Eora and EXIOBASE use (compressed) csv tables.
+For example, the WIOD database \cite{timmer2015} is provided as xlsx tables, whereas Eora \cite{lenzen2013} and EXIOBASE \cite{stadler2018b} use (compressed) csv tables.
 For the two latter, however, the approach differs as Eora26 used pure numerical tables with separate files describing the headers, whereas EXIOBASE use csv tables which include the headers.
 To ease the use of different MRIO systems, Pymrio include parsers for the different formats.
 After parsing a MRIO system, Pymrio stores all data in a consistent way.
 For each component (core system and extension) data is stored in a separate folder.
-While the storage-format of the actual numerical data can be defined by the user, each storage folder also contains a json file (file\_parameters.json) which stored information about the used format. 
+While the storage-format of the actual numerical data can be defined by the user, each storage folder also contains a json file (file\_parameters.json) which contains information about the used format. 
 Using the common json file format for storing the file meta data  allows to easily and automatically import the data in other programming environments. 
 By default, each tables is stored as a tab-separated text file format, including row and column headers.
-The folder with the economic core also contains a file metadata.json which stores information on version, name and system (industry by industry or product by product) as well as a record of modifications to the particular MRIO system (including when it was downloaded, any aggregations, removal/addition of extensions, etc.). 
+The folder with the economic core also contains a file metadata.json which includes information about version, name and system (industry by industry or product by product) as well as a record of modifications to the particular MRIO system (including when it was downloaded, applied aggregations, removal/addition of extensions, etc.). 
 
 \subsection*{Usage}
 
@@ -320,7 +312,7 @@ The code examples here are included as interactive Jupyter notebook  tutorial in
 As the code example here only show the code inputs, refer to the notebook to see the output of a specific command. 
 An cloud-based virtual environment with the code example is available at \url{https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}.
 
-Pymrio is a Python \cite{python2018} package, Python version  $\geq$ 3.5 is required.
+Pymrio is a Python \cite{python2018} package, Python version  $\geq$ 3.6 is required.
 The Pymrio packages is hosted on PyPI  \cite{pypi2018}  and the Anaconda Cloud \cite{anacondainc.2018}.
 Therefore, you can either use
 \begin{lstlisting}[language=Bash]
@@ -561,17 +553,17 @@ GNU/Linux, Mac OSX, Windows and any other operating systems running Python with 
 
 \section*{Programming language}
 
-Pymrio was built in Python 3 and currently (Pymrio version 0.3.6) tested for Python 3.6 (TODO 3.7?)
+Pymrio was built in Python 3 and currently (Pymrio version 0.3.6) tested for Python 3.6.
 
 
 \section*{Additional system requirements}
 
 Pymrio runs on every system capable of running the Python SciPy stack.
-The actual memory requirments depend on the MRIO database to be analysed with Pymrio. For example, for EXIOBASE a minimum of 8 GB RAM are required. 
-TODO cITE EXIOBASE 3, also in the rest of the text
+The actual memory requirments depend on the MRIO database to be analysed with Pymrio. For example, for EXIOBASE \cite{stadler2018b} a minimum of 8 GB RAM are required. 
+
 \section*{Dependencies}
 
-For the current Pymrio version 0.3.6:
+For the current Pymrio version 0.3.7:
 
 \begin{itemize}
     \item pandas $\ge$ 0.22.0
@@ -583,7 +575,7 @@ For the current Pymrio version 0.3.6:
 
 The main dependency of Pymrio is Pandas and future versions of Pymrio will follow the developmental changes in Pandas.
 
-The file requirments.txt in the source repository \url{https://github.com/konstantinstadler/pymrio/blob/master/requirements.txt} contains an up-to-date list of all requirements.
+The file requirments.txt in the source repository contains an up-to-date list of all requirements.
 
 For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-pep8 are required.
 
@@ -596,8 +588,8 @@ For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-p
     \item[Persistent identifier:] \url{https://doi.org/10.5281/zenodo.1146054}
 	\item[Licence:] GPL v3
 	\item[Publisher:]  Konstantin Stadler
-    \item[Version published:] 0.3.6 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
-	\item[Date published:] 12/03/18
+    \item[Version published:] 0.3.7 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
+    \item[Date published:] 22/10/18 (version 0.3.7)
 \end{description}
 
 
@@ -607,7 +599,7 @@ For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-p
     \item[Name:] Github (Pymrio is also hosted on pypi and anaconda cloud)
     \item[Persistent identifier:] \url{https://github.com/konstantinstadler/pymrio}
 	\item[Licence:] GPL v3
-	\item[Date published:] 12/03/18
+    \item[Date published:] 22/10/18 (version 0.3.7)
 \end{description}
 
 {\bf Emulation environment} 
@@ -632,16 +624,21 @@ The main motivation for starting the project was to enable a common interface fo
 Future development plans include further visualization possibilities, parser for additional MRIO models and extended analysis capabilities like structural decomposition and structural path analysis.
 Being an open source project, this includes an invitation to fellow researchers to join these coding efforts.
 
-Further points:
-For collaboratours: See readme section, Issue driven (should be also in the section), general use - specific packages for a certain mrio build upon pymrio but not include in the core functionality; for the readme: functions need to have a numpy docstring + new functionality must be documented (for readthedocs, I can help if you have any questions how to do that)
-
-\textcolor{blue}{Please describe in as much detail as possible the ways in which the software could be reused by other researchers both within and outside of your field. This should include the use cases for the software, and also details of how the software might be modified or extended (including how contributors should contact you) if appropriate. Also you must include details of what support mechanisms are in place for this software (even if there is no support).}
+The primary communication channel for Pymrio is the GitHub source repository, in particular the Issue Tracker there. 
+I strongly encouraged to not only use the Issue Tracker for bug reporting but for all questions, comments, and suggestions regarding the project.
+Pymrio follows an "issue driven" development style. This means that the first step for any modifications or enhancements to Pymrio are to file an issue describing the planned changes.
+This allows us to discuss changes before the actual programming and gives us the chance to identify synergies across ongoing efforts and avoid potential double work. 
+Finished modification should than be submited as pull request. Further information about open points and code style can be found in the contributing.rst file at the source repository.
 
 \section*{Acknowledgements}
+Special thanks to 
+Guillaume Majeau-Bettez (Polytechnique Montréal / Norwegian University of Science and Technology), 
+Radek Lonka (Norwegian University of Science and Technology),
+Richard Wood (Norwegian University of Science and Technology) and
+Stefan Pauliuk (University of Freiburg) 
+for discussing ideas and the scope of Pymrio as well as implementation details.
+Much oblidged also to all people already using Pymrio and providing feedback and improvement suggestions. 
 
-\textcolor{blue}{Please add any relevant acknowledgements to anyone else who supported the project in which the software was created, but did not work directly on the software itself.}
-
-Discussions with all persons helping the development by issues, Guillaume for helpful discussions on Python, open source and version control, Richard Wood for introduction to IO
 
 \section*{Funding statement}
 
@@ -651,7 +648,7 @@ Parts of the development of Pymrio was funded by the European Commission under t
 
 The authors declare that they have no competing interests.
 
-\section*{References}
+
 
 \bibliographystyle{bmc-mathphys}
 \bibliography{bibpymrio}  
