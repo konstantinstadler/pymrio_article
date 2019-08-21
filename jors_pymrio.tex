@@ -63,7 +63,7 @@ The use of a consistent storage format including meta data and modification hist
 
 \section*{Keywords}
 
-Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, Consumption Based Accounting, EXIOBASE, WIOD, Eora26, Python
+Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, Consumption Based Accounting, EXIOBASE, WIOD, Eora26, OECD-ICIO, Python
 
 \section*{Introduction}
 
@@ -163,21 +163,6 @@ Multipliers for $F$ are obtained by
     M = SL
 \end{equation}
 
-If parts of the environmental stressors occuring during the final use of product,
-these can be represented by $FY$ (e.g. household emissions).
-
-Production based accounts (direct territorial requirements) per country are therefore given by:
-
-\begin{equation}
-    D_{pba} = Fe + FYe
-\end{equation}
-
-Total requirements (footprints in case of environmental requirements) for any
-given final demand vector $y$ are than given by
-
-\begin{equation}
-    D_{cba} = My + FYe
-\end{equation}
 
 
 Total requirements (footprints in case of environmental requirements) for any
@@ -192,32 +177,51 @@ Y_{i,j}\; |\; i = j$) allow to calculate the factor of production occurring
 abroad (embodied in imports)
 
 \begin{equation}
-    D_{imp} = SMY_{t}
+    D_{imp} = SLY_{t}
 \end{equation}
 
 The factors of production occurring domestically to satisfy final demand in
 other countries is given by:
 
 \begin{equation}
-    D_{exp} = S\widehat{MY_{t}e}
+    D_{exp} = S\widehat{LY_{t}e}
 \end{equation}
+
+
+If parts of the environmental stressors occurring during the final use of product,
+these can be represented by $F_Y$ (e.g. household emissions). 
+These need to be added to the total production and consumption based accounts to obtain the total impacts per country. 
+Production based accounts (direct territorial requirements) per region $i$ are therefore given by summing over the stressors per sector (0\ldots$m$) 
+plus the stressors occurring due to the final consumption for all final demand categories (0\ldots$w$) of that region.
+
+\begin{equation}
+    D_{pba}^i = \sum_{s=0}^m F^i_s + \sum_{c=0}^w F_Y^i_c
+\end{equation}
+
+Similarly, total requirements (footprints in case of environmental requirements) per region $i$ are given by summing the detailed footprint accounts and adding the aggregated final demand stressors.
+
+\begin{equation}
+    D_{cba}^i = \sum_{s=0}^m D_{cba}^i_s + \sum_{c=0}^w F_Y^i_c
+\end{equation}
+
+Internally, the summation are implemented with the \textit{group-by} functionality provided by the pandas package.
 
 
 \subsubsection*{Aggregation}
 
-For the aggregation of the MRIO system the matrix $S_k$ defines
-the aggregation matrix for regions and $S_n$ the aggregation matrix
+For the aggregation of the MRIO system the matrix $B_k$ defines
+the aggregation matrix for regions and $B_n$ the aggregation matrix
 for sectors.
 
 \begin{equation}
-    S_k =
+    B_k =
     \begin{pmatrix}
       b_{1,1} & b_{1,2} & \cdots & b_{1,k} \\
       b_{2,1} & b_{2,2} & \cdots & b_{2,k} \\
       \vdots  & \vdots  & \ddots & \vdots  \\
       b_{w,1} & b_{w,2} & \cdots & b_{w,k}
     \end{pmatrix}
-    S_n =
+    B_n =
     \begin{pmatrix}
       b_{1,1} & b_{1,2} & \cdots & b_{1,n} \\
       b_{2,1} & b_{2,2} & \cdots & b_{2,n} \\
@@ -229,23 +233,23 @@ for sectors.
 With $w$ and $x$ defining the aggregated number of countries and sectors,
 respectively. Entries $b$ are set to 1 if the sector/country of the column
 belong to the aggregated sector/region in the corresponding row and zero
-otherwise. The complete aggregation matrix $S$ is given by the Kronecker
-product of $S_k$ and $S_n$:
+otherwise. The complete aggregation matrix $B$ is given by the Kronecker
+product of $B_k$ and $B_n$:
 
 \begin{equation}
-    S = S_k \otimes S_n
+    B = B_k \otimes B_n
 \end{equation}
 
 The aggregated IO system can than be obtained by
 
 \begin{equation}
-    Z_{agg} = SZS^\mathrm{T} 
+    Z_{agg} = BZB^\mathrm{T} 
 \end{equation}
 
 and
 
 \begin{equation}
-    Y_{agg} = SY(S_k \otimes \mathrm{I})^\mathrm{T}
+    Y_{agg} = BY(B_k \otimes \mathrm{I})^\mathrm{T}
 \end{equation}
 
 with $\mathrm{I}$ defined as the identity matrix with the size the final demand
@@ -254,13 +258,13 @@ categories per country.
 Factor of production are aggregated by
 
 \begin{equation}
-    F_{agg} = FS^\mathrm{T} 
+    F_{agg} = FB^\mathrm{T} 
 \end{equation}
 
-and stressors occuring during final demand by
+and stressors occurring during final demand by
 
 \begin{equation}
-    FY_{agg} = FY(S_k \otimes \mathrm{I})^\mathrm{T}
+    F_Y_{agg} = F_Y(B_k \otimes \mathrm{I})^\mathrm{T}
 \end{equation}
 
 }
@@ -550,29 +554,30 @@ GNU/Linux, Mac OSX, Windows and any other operating systems running Python with 
 
 \section*{Programming language}
 
-Pymrio was built in Python 3 and currently (Pymrio version 0.3.7) tested for Python 3.6.
+Pymrio was built in Python 3 and currently (Pymrio version 0.4.0) tested for Python 3.7.
 
 
 \section*{Additional system requirements}
 
 Pymrio runs on every system capable of running the Python SciPy stack.
-The actual memory requirments depend on the MRIO database to be analysed with Pymrio. For example, for EXIOBASE \cite{stadler2018b} a minimum of 8 GB RAM are required. 
+The actual memory requirements depend on the MRIO database to be analysed with Pymrio. For example, for EXIOBASE \cite{stadler2018b} a minimum of 8 GB RAM are required. 
 
 \section*{Dependencies}
 
-For the current Pymrio version 0.3.7:
+For the current Pymrio version 0.4.0:
 
 \begin{itemize}
-    \item pandas $\ge$ 0.22.0
-    \item numpy $\ge$ 0.12.0
+    \item pandas $\ge$ 0.25.0
+    \item numpy $\ge$ 1.13.4
     \item matplotlib $\ge$ 2.0.0
     \item requests $\ge$ 2.18
     \item xlrd $\ge$ 1.1.0 
+    \item docutils $\ge$ 0.14 
 \end{itemize}
 
 The main dependency of Pymrio is Pandas and future versions of Pymrio will follow the developmental changes in Pandas.
 
-The file requirments.txt in the source repository contains an up-to-date list of all requirements.
+The file requirements.txt in the source repository contains an up-to-date list of all requirements.
 
 For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-pep8 are required.
 
@@ -585,8 +590,8 @@ For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-p
     \item[Persistent identifier:] \url{https://doi.org/10.5281/zenodo.1146054}
 	\item[Licence:] GPL v3
 	\item[Publisher:]  Konstantin Stadler
-    \item[Version published:] 0.3.7 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
-    \item[Date published:] 22/10/18 (version 0.3.7)
+    \item[Version published:] 0.4.0 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
+    \item[Date published:] 12/08/19 (version 0.4.0)
 \end{description}
 
 
@@ -596,7 +601,7 @@ For development and unit testing, pytest $\ge$ 3.1 \cite{krekl2017} and pytest-p
     \item[Name:] Github (Pymrio is also hosted on pypi and anaconda cloud)
     \item[Persistent identifier:] \url{https://github.com/konstantinstadler/pymrio}
 	\item[Licence:] GPL v3
-    \item[Date published:] 22/10/18 (version 0.3.7)
+    \item[Date published:] 12/08/19 (version 0.4.0)
 \end{description}
 
 {\bf Emulation environment} 
@@ -625,7 +630,7 @@ The primary communication channel for Pymrio is the GitHub source repository, in
 I strongly encouraged to not only use the Issue Tracker for bug reporting but for all questions, comments, and suggestions regarding the project.
 Pymrio follows an ``issue driven development'' style. This means that the first step for any modifications or enhancements to Pymrio are to file an issue describing the planned changes.
 This allows us to discuss changes before the actual programming and gives us the chance to identify synergies across ongoing efforts and avoid potential double work. 
-Finished modification should than be submited as pull request. Further information about open points and code style can be found in the contributing.rst file at the source repository.
+Finished modification should than be submitted as pull request. Further information about open points and code style can be found in the contributing.rst file at the source repository.
 
 \section*{Acknowledgements}
 Special thanks to 
@@ -634,7 +639,7 @@ Radek Lonka (Norwegian University of Science and Technology),
 Richard Wood (Norwegian University of Science and Technology) and
 Stefan Pauliuk (University of Freiburg) 
 for discussing ideas and the scope of Pymrio as well as implementation details.
-I am much oblidged also to all people already using Pymrio and providing feedback and improvement suggestions. 
+I am much obliged also to all people already using Pymrio and providing feedback and improvement suggestions. 
 
 
 \section*{Funding statement}
