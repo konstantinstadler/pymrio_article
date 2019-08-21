@@ -239,6 +239,10 @@ product of $S_k$ and $S_n$:
     S = S_k \otimes S_n
 \end{equation}
 
+This effectively arranges the sector aggregation matrix $S_n$ as defined by the 
+the region aggregation matrix $S_k$. Thus, for each 0 entry in $S_k$ a block
+$S_n * 0$ is inserted in $S$ and each 1 corresponds to $S_n * 1$ in $S$.
+
 The aggregated IO system can than be obtained by
 
 \begin{equation}
