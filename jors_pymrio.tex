@@ -58,12 +58,12 @@ Developer of Pymrio, Industrial Ecology Programme, Norwegian University of Scien
 
 Pymrio is an open source tool for Environmentally Extended Multi-Regional Input-Output (EE MRIO) analysis developed in Python.
 It provides a high-level abstraction layer for global EE MRIO databases in order to simplify common EE MRIO data tasks. 
-Among others, Pymrio includes parsers for several openly available EE MRIO databases (EXIOBASE v1 - v3, WIOD, Eora26) as well as methods for production and consumption based accounts calculation, aggregation, stressor origin estimation and visualization. 
+Among others, Pymrio includes parsers for several openly available EE MRIO databases (EXIOBASE v1 - v3, WIOD, Eora26) as well as methods for production- and consumption-based accounts calculation, aggregation, stressor origin estimation and visualization. 
 The use of a consistent storage format including meta data and modification history for MRIOs allows to exchange data with other analysis tools, aiming for an increased interoperability of Industrial Ecology analysis software.
 
 \section*{Keywords}
 
-Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, Consumption Based Accounting, EXIOBASE, WIOD, Eora26, OECD-ICIO, Python
+Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, Consumption-Based Accounting, EXIOBASE, WIOD, Eora26, OECD-ICIO, Python
 
 \section*{Introduction}
 
@@ -90,7 +90,7 @@ This section gives an overview about the mathematical background of EE MRIO anal
 
 Generally, mathematical routines implemented in Pymrio follow the equations described below.
 If, however, a more efficient mechanism was available this was preferred.
-In this cases the original formula remains as comment in the source code.
+In these cases the original formula remains as comment in the source code.
 This was usually the case when numpy broadcasting \cite{vanderwalt2011} was available for a specific operation, resulting in a substantial speed up of the calculations.
 
 The Input-Output analysis implemented in Pymrio follows the classic Leontief demand-style modeling  \cite{leontief1970}.
@@ -106,7 +106,7 @@ To do so, MRIO tables describe the global inter-industries flows within and acro
     \end{pmatrix}
 \end{equation}
 
-Each submatrix on the main diagonal ($Z_{i,i}$) represent the domestic
+Each submatrix on the main diagonal ($Z_{i,i}$) represents the domestic
 interactions for each industry $n$. The off diagonal matrices ($Z_{i,j}$)
 describe the trade from region $i$ to region $j$ (with $i, j = 1, \ldots, k$)
 for each industry. Accordingly, global final demand can be represented by
@@ -141,17 +141,17 @@ diagonalised and inverted gross output $x$:
     A = Z\hat{x}^{-1}
 \end{equation}
 
-Based on the linear economy assumption of the IO model, gross output $x$ can than be determined for any arbitrary vector of final demand $y$ by multiplying with the total requirement matrix (Leontief matrix) $L$.
+Based on the linear economy assumption of the IO model, gross output $x$ can then be determined for any arbitrary vector of final demand $y$ by multiplying with the total requirement matrix (Leontief matrix) $L$.
 
 \begin{equation}
     x = (\mathrm{I}- A)^{-1}y = Ly
 \end{equation}
 
 
-IO systems can be extended with various exentions (satellite accounts).
+IO systems can be extended with various extensions (satellite accounts).
 Among others these can represent factors of production (e.g. value added, employment)
 and environmental stressors associated with production.
-These direct factor $F$ can be normalized to the output per sector $x$ by
+These direct factors, contained in matrix $F$, can be normalized to the output per sector $x$ by
 
 \begin{equation}
     S = F\hat{x}^{-1}
@@ -166,14 +166,14 @@ Multipliers for $F$ are obtained by
 
 
 Total requirements (footprints in case of environmental requirements) for any
-given final demand vector $y$ are than given by 
+given final demand vector $y$ are then given by 
 
 \begin{equation}
     D_{cba} = My
 \end{equation}
 
 Setting the domestically satisfied final demand $Y_{i,i}$ to zero ($Y_{t} = Y -
-Y_{i,j}\; |\; i = j$) allow to calculate the factor of production occurring
+Y_{i,j}\; |\; i = j$) allows to calculate the factor of production occurring
 abroad (embodied in imports)
 
 \begin{equation}
@@ -190,8 +190,8 @@ other countries is given by:
 
 If parts of the environmental stressors occurring during the final use of product,
 these can be represented by $F_Y$ (e.g. household emissions). 
-These need to be added to the total production and consumption based accounts to obtain the total impacts per country. 
-Production based accounts (direct territorial requirements) per region $i$ are therefore given by summing over the stressors per sector (0\ldots$m$) 
+These need to be added to the total production- and consumption-based accounts to obtain the total impacts per country. 
+Production-based accounts (direct territorial requirements) per region $i$ are therefore given by summing over the stressors per sector (0\ldots$m$) 
 plus the stressors occurring due to the final consumption for all final demand categories (0\ldots$w$) of that region.
 
 \begin{equation}
@@ -240,11 +240,11 @@ product of $B_k$ and $B_n$:
     B = B_k \otimes B_n
 \end{equation}
 
-This effectively arranges the sector aggregation matrix $S_n$ as defined by the 
-the region aggregation matrix $S_k$. Thus, for each 0 entry in $S_k$ a block
-$S_n * 0$ is inserted in $S$ and each 1 corresponds to $S_n * 1$ in $S$.
+This effectively arranges the sector aggregation matrix $B_n$ as defined by
+the region aggregation matrix $B_k$. Thus, for each 0 entry in $B_k$ a block
+$B_n * 0$ is inserted in $B$ and each 1 corresponds to $B_n * 1$ in $B$.
 
-The aggregated IO system can than be obtained by
+The aggregated IO system can then be obtained by
 
 \begin{equation}
     Z_{agg} = BZB^\mathrm{T} 
@@ -256,10 +256,10 @@ and
     Y_{agg} = BY(B_k \otimes \mathrm{I})^\mathrm{T}
 \end{equation}
 
-with $\mathrm{I}$ defined as the identity matrix with the size the final demand
+with $\mathrm{I}$ defined as the identity matrix with the size equal to the number of final demand
 categories per country.
 
-Factor of production are aggregated by
+Factors of production are aggregated by
 
 \begin{equation}
     F_{agg} = FB^\mathrm{T} 
@@ -276,7 +276,7 @@ and stressors occurring during final demand by
 \subsection*{Implementation}
 
 
-The main design principle of Pymrio is based on the concept that an EE MRIO systems can be effectively represented as an object in an Object Oriented Programming (OOP) language.
+The main design principle of Pymrio is based on the concept that an EE MRIO system can be effectively represented as an object in an Object Oriented Programming (OOP) language.
 In Pymrio, such an EE MRIO object consists of a core component describing the economic relationships grouped with a various number of components describing the environmental and/or social extensions (satellite accounts, see Figure 1). 
 All components of the main object are in turn represented as objects, allowing to implement specific methods for each sub-component.
 
@@ -304,8 +304,8 @@ After parsing a MRIO system, Pymrio stores all data in a consistent way.
 For each component (core system and extension) data is stored in a separate folder.
 While the storage-format of the actual numerical data can be defined by the user, each storage folder also contains a json file (file\_parameters.json) which contains information about the used format. 
 Using the common json file format for storing the file meta data  allows to easily and automatically import the data in other programming environments. 
-By default, each tables is stored as a tab-separated text file format, including row and column headers.
-The folder with the economic core also contains a file metadata.json which includes information about version, name and system (industry by industry or product by product) as well as a record of modifications to the particular MRIO system (including when it was downloaded, applied aggregations, removal/addition of extensions, etc.). 
+By default, each table is stored as a tab-separated text file format, including row and column headers.
+The folder with the economic core also contains a file named ``metadata.json'' which includes information about version, name and system (industry-by-industry or product-by-product) as well as a record of modifications to the particular MRIO system (including when it was downloaded, applied aggregations, removal/addition of extensions, etc.). 
 
 \subsection*{Usage}
 
@@ -318,7 +318,7 @@ As the code example here only show the code inputs, refer to the notebook to see
 An cloud-based virtual environment with the code example is available at \url{https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}.
 
 Pymrio is a Python \cite{python2018} package, Python version  $\geq$ 3.6 is required.
-The Pymrio packages is hosted on PyPI  \cite{pypi2018}  and the Anaconda Cloud \cite{anacondainc.2018}.
+The Pymrio package is hosted on PyPI  \cite{pypi2018}  and the Anaconda Cloud \cite{anacondainc.2018}.
 Therefore, you can either use
 \begin{lstlisting}[language=Bash]
 pip install pymrio --upgrade
@@ -330,7 +330,7 @@ conda install -c konstantinstadler pymrio
 
 to install Pymrio and all required packages.
 
-Pymrio can than be used in any Python programming environment.
+Pymrio can then be used in any Python programming environment.
 
 Throughout the code examples below, it is assumed that Pymrio is imported as follows: 
 
@@ -346,7 +346,7 @@ pymrio.download_wiod2013(storage_folder=raw_wiod_path,
 \end{lstlisting}
 
 This downloads the 2008 MRIO table from WIOD. Omitting the year parameter would result in a download of all years.
-The function returns a Pymrio meta data object, which gives information about the WIOD version, system (in this case industry by industry) and records about from where the data was received (see SI cell 6).
+The function returns a Pymrio meta data object, which gives information about the WIOD version, system (in this case industry-by-industry) and records about from where the data was received (see SI cell 6).
 
 To parse the database into a Pymrio object use:
 \begin{lstlisting}
@@ -373,7 +373,7 @@ For example, in order to see the AIR emissions provided by WIOD:
 wiod.AIR.F
 \end{lstlisting}
 
-WIOD, however, does neither provide any normalized data (A-matrix, satellite account coefficient data) nor any consumption based accounts (footprints).
+WIOD, however, does neither provide any normalized data (A-matrix, satellite account coefficient data) nor any consumption-based accounts (footprints).
 
 In order to calculate them, one could go through all the missing data and compute each account. 
 Pymrio provides the required functions, for example to calculate the A-matrix:
@@ -387,7 +387,7 @@ Alternativly, Pymrio provides a function which finds all missing accounts and ca
 wiod.calc_all()
 \end{lstlisting}
 
-At this point, a basic EE MRIO analysis is accomplished. For example, the regional consumption based accounts of the AIR emissions are now given by:
+At this point, a basic EE MRIO analysis is accomplished. For example, the regional consumption-based accounts of the AIR emissions are now given by:
 \begin{lstlisting}
 wiod.AIR.D_cba_reg
 \end{lstlisting}
@@ -451,7 +451,7 @@ The diagonalzied CH4 data now shows the source and destination of the specified 
 wiod.CH4_source.D_cba
 \end{lstlisting}
 
-In this square consumption based accounts matrix, every column represents the amount of stressor occurring in each region - sector driven by the consumption stated in the column header. Conversely, each row states where the stressor impacts occurring in the row are distributed to (from where they are driven).
+In this square consumption-based accounts matrix, every column represents the amount of stressors occurring in each region - sector driven by the consumption stated in the column header. Conversely, each row states where the stressor impacts occurring in the row are distributed to (from where they are driven).
 
 If only one specific aspect of the source is of interest for the analysis, the footprint matrix can easily be aggregated with the standard Pandas {\it groupby} function.
 For example, to aggregate to the source and receiving region of the stressor:
@@ -462,7 +462,7 @@ CH4_source_reg = wiod.CH4_source.D_cba.groupby(
     level='region', axis=1).sum()
 \end{lstlisting}
 
-Which can than be visualised using the seaborn heatmap \cite{waskom2017} with (Figure 3):
+Which can then be visualised using the seaborn heatmap \cite{waskom2017} with (Figure 3):
 
 \begin{lstlisting}
 import seaborn as sns
@@ -525,7 +525,7 @@ For more information about the capabilities of Pymrio check the online documenta
 
 \section*{Quality control}
 
-All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit tested against published results extracted from a classic input-output textbook \cite{miller2009}.
+All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit-tested against published results extracted from a classic input-output textbook \cite{miller2009}.
 Additional unit tests validate various components of the aggregation, file IO and other utility methods.
 Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package.
 
@@ -623,7 +623,7 @@ English
 
 \section*{(3) Reuse potential}
 
-Pymrio contains functionality aimed at professional MRIO analysts and sustainability scientist, but might be useful to anyone doing environmental and/or economic analysis. 
+Pymrio contains functionality aimed at professional MRIO analysts and sustainability scientists, but might be useful to anyone doing environmental and/or economic analysis. 
 As such, Pymrio is one key component in the Industrial Ecology analysis software framework \cite{pauliuk2015}.
 With the other components it shares the ambition to improve usability, interoperability, and collaboration between Industrial Ecology and sustainability research Python packages.
 The main motivation for starting the project was to build a common interface for handling different MRIO databases, but through the years the scope extended to include visualization, reporting and data provenance tracking capabilities.
@@ -634,7 +634,7 @@ The primary communication channel for Pymrio is the GitHub source repository, in
 I strongly encouraged to not only use the Issue Tracker for bug reporting but for all questions, comments, and suggestions regarding the project.
 Pymrio follows an ``issue driven development'' style. This means that the first step for any modifications or enhancements to Pymrio are to file an issue describing the planned changes.
 This allows us to discuss changes before the actual programming and gives us the chance to identify synergies across ongoing efforts and avoid potential double work. 
-Finished modification should than be submitted as pull request. Further information about open points and code style can be found in the contributing.rst file at the source repository.
+Finished modification should then be submitted as pull request. Further information about open points and code style can be found in the contributing.rst file at the source repository.
 
 \section*{Acknowledgements}
 Special thanks to 
