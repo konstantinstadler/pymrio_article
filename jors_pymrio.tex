@@ -63,7 +63,7 @@ The use of a consistent storage format including meta data and modification hist
 
 \section*{Keywords}
 
-Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, Consumption-Based Accounting, EXIOBASE, WIOD, Eora26, OECD-ICIO, Python
+Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, \\ Consumption-Based Accounting, EXIOBASE, WIOD, Eora26, OECD-ICIO, Python
 
 \section*{Introduction}
 
@@ -72,7 +72,7 @@ Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe e
 In contrast to other Industrial Ecology methodologies like 
 Life Cycle Assessment (e.g. Brightway \cite{mutel2017}, openLCA \cite{openlca2018})
 or Material Flow Analysis (e.g. STAN \cite{cencic2008}), 
-few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015}. One of the very few well documented and stand alone packages for IO analysis, PyIO \cite{nazara2003}, has not been updated since 2011. Another framework, the MRIOLab suite \cite{geschke2017,lenzen2017} takes a different approach: it provides a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. The MRIOLab also includes functions for MRIO analysis. These, however, are not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since the tables can not fully reproduced within the MRIOLab \cite{rahman2017,reyes2017}.
+few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015}. One of the very few well documented and stand alone packages for IO analysis, PyIO \cite{nazara2003}, is not available for Python 3 and does not provide parsers for current MRIO databases (the package has not been updated since 2011 but is still available at \texttt{http://www.real.illinois.edu/pyio}). Another framework, the MRIOLab suite \cite{geschke2017,lenzen2017} takes a different approach: it provides a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. The MRIOLab also includes functions for MRIO analysis. These, however, are not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since the tables can not fully reproduced within the MRIOLab \cite{rahman2017,reyes2017}.
 
 As a consequence of the lack of a generic MRIO analysis toolkit, MRIO analysis today relies on often ad-hoc produced scripts and functions. This hinders reproducibility of results and the reuse of previous coding efforts.
 Here I present the open source tool Pymrio, a Python 3 package, which aims to close this method gap for EE MRIO analysis.
@@ -89,9 +89,9 @@ The reuse potential and future development plans are pointed out at the end of t
 This section gives an overview about the mathematical background of EE MRIO analysis as used in Pymrio. 
 
 Generally, mathematical routines implemented in Pymrio follow the equations described below.
-If, however, a more efficient mechanism was available this was preferred.
+If, however, a more computationally efficient mechanism was available this was preferred.
 In these cases the original formula remains as comment in the source code.
-This was usually the case when numpy broadcasting \cite{vanderwalt2011} was available for a specific operation, resulting in a substantial speed up of the calculations.
+Mostly,  this was the case when instead of a matrix multiplication with a diagonalized vector the operation can be efficiently executed using numpy broadcasting mechanisms \cite{vanderwalt2011}.
 
 The Input-Output analysis implemented in Pymrio follows the classic Leontief demand-style modeling  \cite{leontief1970}.
 To do so, MRIO tables describe the global inter-industries flows within and across countries for $k$ countries with a transaction matrix $Z$:
@@ -157,7 +157,7 @@ These direct factors, contained in matrix $F$, can be normalized to the output p
     S = F\hat{x}^{-1}
 \end{equation}
 
-Multipliers for $F$ are obtained by
+Multipliers (total, direct and indirect, requirement factors for one unit of output) are then obtained by
 
 \begin{equation}
     M = SL
@@ -181,12 +181,13 @@ abroad (embodied in imports)
 \end{equation}
 
 The factors of production occurring domestically to satisfy final demand in
-other countries is given by:
+other countries is given by: 
 
 \begin{equation}
     D_{exp} = S\widehat{LY_{t}e}
 \end{equation}
 
+where `` $\widehat$ '' indicates diagonalization of the resulting column-vector of the term underneath.
 
 If parts of the environmental stressors occurring during the final use of product,
 these can be represented by $F_Y$ (e.g. household emissions). 
@@ -286,7 +287,7 @@ All components of the main object are in turn represented as objects, allowing t
   The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
   \end{figure}
 
-This architecture described above was implemented in Python 3.6.
+This architecture described above was implemented in Python 3.7.
 The various tables of the MRIO system are stored in Pandas DataFrames \cite{mckinney2010}, therefore building upon a well-tested data-science framework.
 As a consequence, besides the specific methods implemented by Pymrio, the full functionality of Pandas and the underlying numpy framework \cite{vanderwalt2011} can be used to modify the MRIO data.
 
@@ -313,11 +314,11 @@ The following section provides a quick start guide for using Pymrio beginning at
 For the example here, the WIOD MRIO database \cite{timmer2015} is used. 
 However, after downloading and parsing the database the same methods are available for any EE MRIO system.
 
-The code examples here are included as interactive Jupyter notebook  tutorial in the SI.
+The code examples here are included as interactive Jupyter notebook tutorial in the SI \url{https://git.io/fjjUk}.
 As the code example here only show the code inputs, refer to the notebook to see the output of a specific command. 
-An cloud-based virtual environment with the code example is available at \url{https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}.
+An cloud-based virtual environment with the code example is available at \url{https://cutt.ly/vwmOpA3}. 
 
-Pymrio is a Python \cite{python2018} package, Python version  $\geq$ 3.6 is required.
+Pymrio is a Python \cite{python2018} package, Python version  $\geq$ 3.7 is required.
 The Pymrio package is hosted on PyPI  \cite{pypi2018}  and the Anaconda Cloud \cite{anacondainc.2018}.
 Therefore, you can either use
 \begin{lstlisting}[language=Bash]
@@ -527,7 +528,7 @@ For more information about the capabilities of Pymrio check the online documenta
 
 All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit-tested against published results extracted from a classic input-output textbook \cite{miller2009}.
 Additional unit tests validate various components of the aggregation, file IO and other utility methods.
-Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package.
+Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package. Currently, the test coverage exceeds 90 \% \url{https://cutt.ly/JwPggqV}. 
 
 All tests are implemented in pytest \cite{krekl2017} and users can verify the correctness of Pymrio, after installing pytest, by
 
@@ -537,7 +538,7 @@ py.test -v
 
 in the root of the local copy of Pymrio.
 
-In addition, Pymrio uses the continous integration platform Travis CI \cite{travis2018} for automatic testing after each change of the code base uploaded to the source repository. 
+In addition, Pymrio uses the continuous integration platform Travis CI \cite{travis2018} for automatic testing after each change of the code base uploaded to the source repository. After each build, test coverage is automatically calculated using the coveralls platform \url{https://coveralls.io}.
 
 The Pymrio source code follows the pep8 specifications \cite{rossuml2017}; accordance with this code standard is also tested through Travis CI integration. This implies, that any code contribution to Pymrio must follow the pep8 guidelines.
 
