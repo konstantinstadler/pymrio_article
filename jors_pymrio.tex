@@ -67,7 +67,86 @@ Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, \\ 
 
 \section*{Introduction}
 
-Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions. The analysis of the these tables has become the prevailing methodology in Industrial Ecology and sustainability science to evaluate globally spanning supply chains in order to calculate the environmental and social consequences of trade and consumption \cite{davis2010a,ivanova2017,tukker2016,verones2015,wood2018,wood2018a}.
+Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions.
+
+They capture the full life-cycle impacts of goods and services across international supply chains and therefore enable researchers to understand the environmental, social and economic consequences of consumption in todays globalised world. 
+Research questions that can be answered using MRIO tables range from 
+EXAMPLES (carbon, trade, job, biodiversity, human needs, see also que vadis wiedmann).
+
+Given their potential to address this variety of sustainability questions, EE MRIOs analysis has become one of the prevailing methodology in Industrial Ecology and quantitative sustainability science \cite{davis2010a,ivanova2017,tukker2016,verones2015,wood2018,wood2018a}.
+
+Historically, MRIOs developed from single country input-output tables 
+DESCRIBE, THEN REGIONAL, GLOBAL. Note that Pymrio can be used for all of them when a consistent sector classification is used.
+
+Despite their long history, no common framework...
+
+
+True (full) multi-region models endogenously combine domestic
+technical coefficient matrices with import matrices from multiple
+countries or regions into one large coefficient matrix, thus capturing
+trade supply chains between all trading partners as well as feedback
+effects. The latter are changes in production in one region that result
+from changes in intermediate demand in another region, which are in
+turn brought about by demand changes in the first region (see Miller,
+1969, p.41).4
+It is worth noting at this point that the term MRIO, for multi-
+regional input–output model, has its origin in regional economics,
+interested in differences in production technologies between regions
+within a nation. The first such subnational applications to the US
+economy can be traced back to the 1950s and a distinction between
+MRIO and IRIO, for inter-regional input–output model, was made
+early on. The differences between the two approaches are grounded in
+the way regional technology coefficients and inter-regional trade
+coefficients are calculated (Miller and Blair, 2009, Chapter 3; see also
+Guo et al., 2009, Box 1, p.7). The MRIO method is a simplification of the
+IRIO method designed to deal with the most common of data
+limitations.
+Inter-regional input–output modelling was first formulated by
+Isard (1951) who extended the classical national Leontief model to
+allow for regional analyses. Studies that followed early on were aimed
+at improving the computability of IRIO analysis but were not aimed at
+environmental applications (Chenery, 1953; Leontief and Strout,
+1963; Leontief, 1953; Miernyk, 1973; Moses, 1955; Riefler and
+Tiebout, 1970; Riefler, 1973). Polenske (1976, 1980) examines the
+economic interactions and repercussions between the coal mining,
+freight transport and electricity generation sectors in nine regions of
+the USA.
+Although the input–output community swiftly turned its attention
+to the world economy — and therefore international or multi-national
+models (most famously in Leontief's world model; Leontief, 1974) —
+the term MRIO has only in the last decade begun to be used for models
+with entire countries or clusters of countries as regions. Particular
+assumptions, conventions, data sources, and methods have been
+developed alongside. For the purpose of this paper I use the term
+MRIO for all international and subnational input–output models with
+more than one region. It should be born in mind, however, that not all
+MRIO approaches have the same mathematical form and modelling
+background.
+
+
+Tukker Dietzenbacher
+Similar issues have arisen in the trade literature as succinctly reflected by the titles of some
+papers, such as “Who produces for whom in the world economy?” (Daudin et al., 2011) or
+“Give credit where credit is due: tracing value added in global production chains” (Koopman
+et al., 2010). Production processes have increasingly become sliced up (or fragmented) into
+ever smaller parts. Many of these parts are outsourced to specialized subcontractors that
+are more and more located in foreign countries (i.e. offshoring). This has led to an upsurge
+of trade in intermediate products because the location of the production of intermediate
+inputs differs from the location of the production of the final products (which corresponds
+to Baldwin’s, 2006, ‘second wave of global unbundling’). Today’s products and services are
+no longer produced within a single country. Instead, they are made in global supply chains,
+or global value chains. That is, countries import intermediate goods and raw materials, to
+which they add one or more layers of value after which they sell the product (often to a
+foreign producer who adds the next layer).
+
+regions within a nation by Isard (1951). MRIO tables have become a widely discussed topic
+in the regional science literature and a widely used tool for regional policy. The textbook
+by Miller and Blair (2009) provides an excellent overview and a thorough introduction to
+MRIO tables and models. At the same time, it should also be emphasized that the regional
+
+FOR DISCUSSION/USE:Need for improvment based on use - make use easy to have a larger userbase and advance the develoment of MRIO models
+
+-----------------
 
 In contrast to other Industrial Ecology methodologies like 
 Life Cycle Assessment (e.g. Brightway \cite{mutel2017}, openLCA \cite{openlca2018})
@@ -87,6 +166,8 @@ The reuse potential and future development plans are pointed out at the end of t
 \subsection*{Mathematical Background}
 
 This section gives an overview about the mathematical background of EE MRIO analysis as used in Pymrio. 
+
+TODO: The focus of this section are on the specifics of the multi-regional aspects of input-output analysis. Note, however, that Pymrio can also be used for analysing simple single country input-output tables. Readers unfamiliar with input-output analysis are referred to the standard text-book for input-output analysis by Miller and Blair (CITATION). Exercises of this book are also used in the online documentation which also highlights how Pymrio can be used for teaching of input-output methods (LINK). 
 
 Generally, mathematical routines implemented in Pymrio follow the equations described below.
 If, however, a more computationally efficient mechanism was available this was preferred.

@@ -4,38 +4,27 @@
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
+!_TAG_PROGRAM_VERSION	0.0.0	/45968eff/
 (1) Overview	jors_pymrio.tex	/^\\section*{(1) Overview}$/;"	s
 (2) Availability	jors_pymrio.tex	/^\\section*{(2) Availability}$/;"	s
 (3) Reuse potential	jors_pymrio.tex	/^\\section*{(3) Reuse potential}$/;"	s
 Abstract	jors_pymrio.tex	/^\\section*{Abstract}$/;"	s
-Acknowledgements	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Acknowledgements}$/;"	s
 Acknowledgements	jors_pymrio.tex	/^\\section*{Acknowledgements}$/;"	s
 Additional system requirements	jors_pymrio.tex	/^\\section*{Additional system requirements}$/;"	s
-Aggregation	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\subsubsection*{Aggregation}$/;"	b	subsection:Architecture""Mathematical Background
 Aggregation	jors_pymrio.tex	/^\\subsubsection*{Aggregation}$/;"	b	subsection:Implementation and architecture""Mathematical Background
-Architecture	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Architecture}$/;"	s
-Author's contributions	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Author's contributions}$/;"	s
-Competing interests	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Competing interests}$/;"	s
 Competing interests	jors_pymrio.tex	/^\\section*{Competing interests}$/;"	s
-Conclusions	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Conclusions}$/;"	s
 Dependencies	jors_pymrio.tex	/^\\section*{Dependencies}$/;"	s
-Figures	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Figures}$/;"	s
 Funding statement	jors_pymrio.tex	/^\\section*{Funding statement}$/;"	s
-Implementation	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\subsection*{Implementation}$/;"	u	section:Architecture
 Implementation	jors_pymrio.tex	/^\\subsection*{Implementation}$/;"	u	section:Implementation and architecture
 Implementation and architecture	jors_pymrio.tex	/^\\section*{Implementation and architecture}$/;"	s
-Introduction	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Introduction}$/;"	s
 Introduction	jors_pymrio.tex	/^\\section*{Introduction}$/;"	s
 Invitation for open review	README.rst	/^Invitation for open review$/;"	s	chapter:Pymrio article 
 Keywords	jors_pymrio.tex	/^\\section*{Keywords}$/;"	s
 Language	jors_pymrio.tex	/^\\section*{Language}$/;"	s
-Mathematical Background	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\subsection*{Mathematical Background}$/;"	u	section:Architecture
 Mathematical Background	jors_pymrio.tex	/^\\subsection*{Mathematical Background}$/;"	u	section:Implementation and architecture
 Operating system	jors_pymrio.tex	/^\\section*{Operating system}$/;"	s
 Paper Author Roles and Affiliations	jors_pymrio.tex	/^\\section*{Paper Author Roles and Affiliations}$/;"	s
 Paper Authors	jors_pymrio.tex	/^\\section*{Paper Authors}$/;"	s
-Parsing and Storage	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\subsection*{Parsing and Storage}$/;"	u	section:Architecture
 Parsing and Storage	jors_pymrio.tex	/^\\subsection*{Parsing and Storage}$/;"	u	section:Implementation and architecture
 Programming language	jors_pymrio.tex	/^\\section*{Programming language}$/;"	s
 Pymrio article 	README.rst	/^Pymrio article $/;"	c
@@ -43,5 +32,4 @@ Quality control	jors_pymrio.tex	/^\\section*{Quality control}$/;"	s
 Software location:	jors_pymrio.tex	/^\\section*{Software location:}$/;"	s
 Structure	README.rst	/^Structure$/;"	s	chapter:Pymrio article 
 Title	jors_pymrio.tex	/^\\section*{Title}$/;"	s
-Usage	.ipynb_checkpoints/pymrio-checkpoint.tex	/^\\section*{Usage}$/;"	s
 Usage	jors_pymrio.tex	/^\\subsection*{Usage}$/;"	u	section:Implementation and architecture
