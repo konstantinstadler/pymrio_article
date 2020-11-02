@@ -12,13 +12,14 @@
 
 \usepackage{amsthm,amsmath}
 \usepackage{graphicx}
+\usepackage{xurl}
 \usepackage{listings,url}
 \usepackage[
 backend=bibtex,
 style=nature,
 sorting=ynt
 ]{biblatex}
-
+\addbibresource{ZotOutput.bib}
 
 \lstset{language=Python}
 % additional python keywords
@@ -69,7 +70,7 @@ The use of a consistent storage format including meta data and modification hist
 
 \section*{Keywords}
 
-Sustainability Analysis, Multi Regional Input Output Analysis, Footprinting, \\ Consumption-Based Accounting, EXIOBASE, WIOD, Eora26, OECD-ICIO, Python
+Sustainability Analysis, Multi Regional Input Output Analysis, \\ Footprinting, Consumption-Based Accounting, EXIOBASE, WIOD, \\ Eora26, OECD-ICIO, Python
 
 \section*{Introduction}
 
@@ -274,7 +275,7 @@ other countries is given by:
     D_{exp} = S\widehat{LY_{t}e}
 \end{equation}
 
-where ``$\widehat$'' indicates diagonalization of the resulting column-vector of the term underneath.
+where $\ \widehat{ }\ $ indicates diagonalization of the resulting column-vector of the term underneath.
 
 If parts of the environmental stressors occurring during the final use of product,
 these can be represented by $F_Y$ (e.g. household emissions). 
@@ -427,7 +428,7 @@ Throughout the code examples below, it is assumed that Pymrio is imported as fol
 import pymrio
 \end{lstlisting}
 
-First, the Pymrio MRIO download function is used to get the WIOD MRIO database with:
+First, the Pymrio MRIO download function is used to get the WIOD MRIO data-base with:
 \begin{lstlisting}
 raw_wiod_path = '/tmp/wiod/raw'
 pymrio.download_wiod2013(storage_folder=raw_wiod_path,
@@ -701,7 +702,7 @@ For development and unit testing, pytest $\ge$ 3.1 and pytest-pep8 are required.
 
 \begin{description}[noitemsep,topsep=0pt]
 	\item[Name:] MyBinder Jupyter Notebook of the tutorial included above
-    \item[Persistent identifier:] \url{https://mybinder.org/v2/gh/konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}
+    \item[Persistent identifier:] \url{https://mybinder.org/v2/gh /konstantinstadler/pymrio_article/master?filepath=%2Fnotebook%2Fpymrio-tutorial-for-wiod.ipynb}
         \item[Licence:] CC BY 4.0
 	\item[Date published:] 18/01/18
 \end{description}
@@ -745,7 +746,7 @@ The authors declare that they have no competing interests.
 
 
 
-\printbibliography{ZotOutput}  
+\printbibliography  
 
 \vspace{2cm}
 
