@@ -76,84 +76,39 @@ Sustainability Analysis, Multi Regional Input Output Analysis, \\ Footprinting, 
 
 Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions.
 
-They capture the full life-cycle impacts of goods and services across international supply chains and therefore enable researchers to understand the environmental, social and economic consequences of consumption in todays globalised world. 
-Research questions that can be answered using MRIO tables range from 
-EXAMPLES (carbon, trade, job, biodiversity, human needs, see also que vadis wiedmann).
- 
-Given their potential to address this variety of sustainability questions, EE MRIOs analysis has become one of the prevailing methodology in Industrial Ecology and quantitative sustainability science \cite{davis2010_Consumptionbased, ivanova2017_Mapping, tukker2016_Environmental, verones2015_Harmonizing, wood2018_Growth, wood2018_Prioritizing}.
+They capture the full life-cycle impacts of goods and services across international supply chains and allow researchers to understand the environmental, social and economic consequences of consumption in todays globalised world. 
+Research questions that can be answered using MRIO tables range from calculating the carbon footprint of nations \cite{tukker2014_Global, kanemoto2016_Mapping} and households \cite{ivanova2016_Environmental}, to analysing the impacts of international trade on biodiversity \cite{lenzen2012_International, verones2017_Resource, marques2019_Increasing}, to investigations of the material requirments of the current global economcy \cite{wiedmann2013_material}. In addition, EE MRIO analysis is increasingly used to inform policy makers about connections, trade-offs and synergies across environmental and social issues \cite{simas2014_Bad, simas2017_Correlation, vivanco2018_Nexus, wood2020_peak}.
 
-Historically, MRIOs developed from single country input-output tables 
-DESCRIBE, THEN REGIONAL, GLOBAL. Note that Pymrio can be used for all of them when a consistent sector classification is used.
-
-Despite their long history, no common framework...
+\subsection*{The MRIO framework}
 
 
-True (full) multi-region models endogenously combine domestic
-technical coefficient matrices with import matrices from multiple
-countries or regions into one large coefficient matrix, thus capturing
-trade supply chains between all trading partners as well as feedback
-effects. The latter are changes in production in one region that result
-from changes in intermediate demand in another region, which are in
-turn brought about by demand changes in the first region (see Miller,
-1969, p.41).4
-It is worth noting at this point that the term MRIO, for multi-
-regional input–output model, has its origin in regional economics,
-interested in differences in production technologies between regions
-within a nation. The first such subnational applications to the US
-economy can be traced back to the 1950s and a distinction between
-MRIO and IRIO, for inter-regional input–output model, was made
-early on. The differences between the two approaches are grounded in
-the way regional technology coefficients and inter-regional trade
-coefficients are calculated (Miller and Blair, 2009, Chapter 3; see also
-Guo et al., 2009, Box 1, p.7). The MRIO method is a simplification of the
-IRIO method designed to deal with the most common of data
-limitations.
-Inter-regional input–output modelling was first formulated by
-Isard (1951) who extended the classical national Leontief model to
-allow for regional analyses. Studies that followed early on were aimed
-at improving the computability of IRIO analysis but were not aimed at
-environmental applications (Chenery, 1953; Leontief and Strout,
-1963; Leontief, 1953; Miernyk, 1973; Moses, 1955; Riefler and
-Tiebout, 1970; Riefler, 1973). Polenske (1976, 1980) examines the
-economic interactions and repercussions between the coal mining,
-freight transport and electricity generation sectors in nine regions of
-the USA.
-Although the input–output community swiftly turned its attention
-to the world economy — and therefore international or multi-national
-models (most famously in Leontief's world model; Leontief, 1974) —
-the term MRIO has only in the last decade begun to be used for models
-with entire countries or clusters of countries as regions. Particular
-assumptions, conventions, data sources, and methods have been
-developed alongside. For the purpose of this paper I use the term
-MRIO for all international and subnational input–output models with
-more than one region. It should be born in mind, however, that not all
-MRIO approaches have the same mathematical form and modelling
-background.
+The basic building blocks of EE MRIO models are (1) domestic input-output (IO) tables linked with (2) detailed bilateral trade data and extended with (3) environmental accounts \cite{wiedmann2011_Quo}.
+
+The first building block, the domestic IO tables depict the inter-industry relationship within an economy. 
+These are typically square tables, with column/row indices for all industries within a country.
+One columns in these tables describes the inputs (products from other industries) required by one specific industry (or more general product production) to produce its output. 
+Arranging these column vectors into a two dimensional matrix, the rows then depict all users of the output of a specific industry.
+
+Thus, the column of an IO table describes an industrie in its role as user of producs while the correponding row desribes its role as supplier.
+
+In most cases these tables are further extended by sections representing the value added of each industry, taxes and subsidies as well as final consumption (private and government consumers as well as capital formation).
+Input-output tables following the United Nations System of National Accounts, UN SNA \cite{unitednations2009_System}, system are inherently complete and consistent, thus capturing all economic activity within a country where the sum over all inputs into industries equals the output of all industries. 
+The data for domestic input output tables are typically gathered by industry surveys conducted by national statistical agencies as the tables are an integral part of the national accounts. 
+
+The pivotal point to derive global multi regional input output tables from these domestic ones is to connect them through detailed description of bilateral trade flows. 
+These connect each sector of a specific country with all other sectors of all other countries, thus describing how the output of one sector (as export) is used as input (through imports) in any other country. 
+As for domestic tables, global MRIO are inherently complete and consistent, thus capturing all global trade flows and economic activity with two caveats: often multiple countries are aggregated to world regions and the tables usually only describe the official economy (thus reported economic activity) and exclude any shadow economic or financial flows due to criminal activity.
+
+Since global MRIO allow the tracking of products through the global supply chain they have been proven to be an ideal tool to also track the environmental burden associated with the production processes along the supply chains. 
+In order to do so, one conceptually regards environmental effects like land use, emissions or material use as required inputs into the production process of a certain product. 
+This links the environmental consequences due to the production of a product to the products itself. 
+Fundamentally, these opens up two contrasting perspectives: Production based environmental accounts, which describe the environmental consequences at the place of production and the consumption based environmental accounts, which assigns the environmental consequences of production to the final consumer of the product. 
+The later are also known as various kinds of footprints and became a stable tool to describe the environmental performance of countries \cite{tukker2014_Global, ivanova2017_Mapping, giljum2016_Identifying}.
+
+The mathematical handling of these tables is described further below in the section "Mathematical Background".
 
 
-Tukker Dietzenbacher
-Similar issues have arisen in the trade literature as succinctly reflected by the titles of some
-papers, such as “Who produces for whom in the world economy?” (Daudin et al., 2011) or
-“Give credit where credit is due: tracing value added in global production chains” (Koopman
-et al., 2010). Production processes have increasingly become sliced up (or fragmented) into
-ever smaller parts. Many of these parts are outsourced to specialized subcontractors that
-are more and more located in foreign countries (i.e. offshoring). This has led to an upsurge
-of trade in intermediate products because the location of the production of intermediate
-inputs differs from the location of the production of the final products (which corresponds
-to Baldwin’s, 2006, ‘second wave of global unbundling’). Today’s products and services are
-no longer produced within a single country. Instead, they are made in global supply chains,
-or global value chains. That is, countries import intermediate goods and raw materials, to
-which they add one or more layers of value after which they sell the product (often to a
-foreign producer who adds the next layer).
-
-regions within a nation by Isard (1951). MRIO tables have become a widely discussed topic
-in the regional science literature and a widely used tool for regional policy. The textbook
-by Miller and Blair (2009) provides an excellent overview and a thorough introduction to
-MRIO tables and models. At the same time, it should also be emphasized that the regional
-
-FOR DISCUSSION/USE:Need for improvment based on use - make use easy to have a larger userbase and advance the develoment of MRIO models
-
------------------
+\subsection*{Current status for MRIO analysis software}
 
 In contrast to other Industrial Ecology methodologies like 
 Life Cycle Assessment (e.g. Brightway \cite{mutel2017_Brightway}, openLCA \cite{openlca2018_openLCA})
