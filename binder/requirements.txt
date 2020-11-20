@@ -1,4 +1,4 @@
-pymrio==0.4.0
-country_converter==0.6.3
-matplotlib==2.1
-seaborn==0.8.1
+pymrio>=0.4.2
+country_converter>=0.7.1
+matplotlib>=2.1
+seaborn>=0.8.1
