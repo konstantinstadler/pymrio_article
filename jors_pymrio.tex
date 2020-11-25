@@ -101,7 +101,7 @@ Similar to domestic IO tables, global MRIOs are inherently complete and consiste
 Since global MRIOs allow the tracking of products through the global supply chain they have been proven to be an ideal tool to also track the environmental burden associated with the production processes along the supply chains. 
 In order to do so, one conceptually regards environmental effects like land use, emissions or material use as required inputs into the production process of a certain product. 
 This links the environmental consequences due to the production of a product to the products itself. 
-Fundamentally, these opens up two contrasting perspectives: Production based environmental accounts, which describe the environmental consequences at the place of production and the consumption based environmental accounts, which assigns the environmental consequences of production to the final consumer of the product. 
+Fundamentally, these opens up two contrasting perspectives: Production-based environmental accounts, which describe the environmental consequences at the place of production and the consumption-based environmental accounts, which assigns the environmental consequences of production to the final consumer of the product. 
 The later are also known as various kinds of footprints and became a stable tool to describe the environmental performance of countries \cite{tukker2014_Global, ivanova2017_Mapping, giljum2016_Identifying}.
 
 The mathematical handling of these tables is described further below in the section "Mathematical Background".
@@ -217,7 +217,7 @@ given final demand vector $y$ are then given by
 \end{equation}
 
 Setting the domestically satisfied final demand $Y_{i,i}$ to zero ($Y_{t} = Y -
-Y_{i,j}\; |\; i = j$) allows to calculate the factor of production occurring
+Y_{i,j}\; |\; i = j$) allows to calculate the factors of production occurring
 abroad (embodied in imports)
 
 \begin{equation}
@@ -630,7 +630,7 @@ The main dependency of Pymrio is Pandas and future versions of Pymrio will follo
 
 The file requirements.txt in the source repository contains an up-to-date list of all requirements.
 
-For development and unit testing the pytest module and black code formater are required. The requirments_test.txt file and alternatively the environment_dev.yml file (for using conda environments) outline all dependencies necessary for testing and development.
+For development and unit testing the pytest module and black code formater are required. The requirements\_test.txt file and alternatively the environment\_dev.yml file (for using conda environments) outline all dependencies necessary for testing and development.
 
 \section*{Software location:}
 
