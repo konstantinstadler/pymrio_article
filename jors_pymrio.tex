@@ -86,20 +86,19 @@ The basic building blocks of EE MRIO models are (1) domestic input-output (IO) t
 
 The first building block, the domestic IO tables depict the inter-industry relationship within an economy. 
 These are typically square tables, with column/row indices for all industries within a country.
-One columns in these tables describes the inputs (products from other industries) required by one specific industry (or more general product production) to produce its output. 
-Arranging these column vectors into a two dimensional matrix, the rows then depict all users of the output of a specific industry.
-
-Thus, the column of an IO table describes an industrie in its role as user of producs while the correponding row desribes its role as supplier.
+One columns in these tables describes the inputs (products from other industries) required by one specific industry (or more general product production process) to produce its output. 
+Arranging these column vectors into a two dimensional matrix, the rows then depict all users of the output of a specific industry. 
+Thus, the column of an IO table describes an industry in its role as user of products while the corresponding row describes its role as supplier.
 
 In most cases these tables are further extended by sections representing the value added of each industry, taxes and subsidies as well as final consumption (private and government consumers as well as capital formation).
-Input-output tables following the United Nations System of National Accounts, UN SNA \cite{unitednations2009_System}, system are inherently complete and consistent, thus capturing all economic activity within a country where the sum over all inputs into industries equals the output of all industries. 
-The data for domestic input output tables are typically gathered by industry surveys conducted by national statistical agencies as the tables are an integral part of the national accounts. 
+Input-output tables following the United Nations System of National Accounts, UN SNA \cite{unitednations2009_System}, system are inherently complete and consistent, thus capturing all economic activity within a country where the sum over all inputs into industries (including imports) equals the output of all industries (including exports). 
+The data for domestic input output tables are typically gathered by industry surveys conducted by national statistical agencies as the tables form an integral part of the national accounts. 
 
 The pivotal point to derive global multi regional input output tables from these domestic ones is to connect them through detailed description of bilateral trade flows. 
-These connect each sector of a specific country with all other sectors of all other countries, thus describing how the output of one sector (as export) is used as input (through imports) in any other country. 
-As for domestic tables, global MRIO are inherently complete and consistent, thus capturing all global trade flows and economic activity with two caveats: often multiple countries are aggregated to world regions and the tables usually only describe the official economy (thus reported economic activity) and exclude any shadow economic or financial flows due to criminal activity.
+These connect each industry/product sector of a specific country with all other sectors of all other countries, thus describing how the output of one sector (as export) is used as input (through imports) in any other country. 
+Similar to domestic IO tables, global MRIOs are inherently complete and consistent, thus capturing all global trade flows and economic activity with two caveats: often multiple countries are aggregated to world regions and the tables usually only describe the official economy (thus reported economic activity) and exclude any shadow economic or financial flows due to criminal activity.
 
-Since global MRIO allow the tracking of products through the global supply chain they have been proven to be an ideal tool to also track the environmental burden associated with the production processes along the supply chains. 
+Since global MRIOs allow the tracking of products through the global supply chain they have been proven to be an ideal tool to also track the environmental burden associated with the production processes along the supply chains. 
 In order to do so, one conceptually regards environmental effects like land use, emissions or material use as required inputs into the production process of a certain product. 
 This links the environmental consequences due to the production of a product to the products itself. 
 Fundamentally, these opens up two contrasting perspectives: Production based environmental accounts, which describe the environmental consequences at the place of production and the consumption based environmental accounts, which assigns the environmental consequences of production to the final consumer of the product. 
@@ -119,7 +118,7 @@ As a consequence of the lack of a generic MRIO analysis toolkit, MRIO analysis t
 Here I present the open source tool Pymrio, a Python 3 package, which aims to close this method gap for EE MRIO analysis.
 
 The article proceeds with a description of the architecture of Pymrio, including the mathematical background and implementation details. 
-This is followed by a short tutorial with a simple use case for Pymrio. This tutorial is also available as an IPython notebook. 
+This is followed by a short tutorial with a simple use case for Pymrio. This tutorial is also available as a Jupyter notebook. 
 The reuse potential and future development plans are pointed out at the end of the article.
 
 
@@ -129,7 +128,9 @@ The reuse potential and future development plans are pointed out at the end of t
 
 This section gives an overview about the mathematical background of EE MRIO analysis as used in Pymrio. 
 
-TODO: The focus of this section are on the specifics of the multi-regional aspects of input-output analysis. Note, however, that Pymrio can also be used for analysing simple single country input-output tables. Readers unfamiliar with input-output analysis are referred to the standard text-book for input-output analysis by Miller and Blair (CITATION). Exercises of this book are also used in the online documentation which also highlights how Pymrio can be used for teaching of input-output methods (LINK). 
+The focus of this section are on the specifics of the multi-regional aspects of input-output analysis. 
+Note, however, that Pymrio can also be used for analysing simple single country input-output tables. 
+Readers unfamiliar with input-output analysis are referred to the standard text-book for input-output analysis by Miller and Blair \cite{miller2009_Inputoutput}. Exercises of this book are also used in the online documentation which also highlights how Pymrio can be used for teaching of input-output methods (\url{https://pymrio.readthedocs.io/en/latest/notebooks/pymrio_directly_assign_attributes.html}). 
 
 Generally, mathematical routines implemented in Pymrio follow the equations described below.
 If, however, a more computationally efficient mechanism was available this was preferred.
@@ -235,7 +236,7 @@ where $\ \widehat{ }\ $ indicates diagonalization of the resulting column-vector
 If parts of the environmental stressors occurring during the final use of product,
 these can be represented by $F_Y$ (e.g. household emissions). 
 These need to be added to the total production- and consumption-based accounts to obtain the total impacts per country. 
-Production-based accounts (direct territorial requirements) per region $i$ are therefore given by summing over the stressors per sector (0\ldots$m$) 
+Total territorial requirements/emissions per region $i$ are therefore given by summing over the stressors per sector (0\ldots$m$) 
 plus the stressors occurring due to the final consumption for all final demand categories (0\ldots$w$) of that region.
 
 \begin{equation}
@@ -248,7 +249,7 @@ Similarly, total requirements (footprints in case of environmental requirements)
     D_{cba}^i = \sum_{s=0}^m D_{cba}^{i_s} + \sum_{c=0}^w F_Y^{i_c}
 \end{equation}
 
-Internally, the summation are implemented with the \textit{group-by} functionality provided by the pandas package.
+Internally, the summation are implemented with the \textit{group-by} functionality provided by the Pandas package \cite{mckinney2010_Data}.
 
 
 \subsubsection*{Aggregation}
@@ -360,7 +361,7 @@ However, after downloading and parsing the database the same methods are availab
 
 The code examples here are included as interactive Jupyter notebook tutorial in the SI \url{https://git.io/fjjUk}.
 As the code example here only show the code inputs, refer to the notebook to see the output of a specific command. 
-An cloud-based virtual environment with the code example is available at \url{https://cutt.ly/vwmOpA3}. 
+An cloud-based virtual environment with the code example can be run in the BinderHub available at \url{https://cutt.ly/vwmOpA3}. 
 
 Pymrio is a Python \cite{python2018_Official} package, Python version  $\geq$ 3.7 is required.
 The Pymrio package is hosted on PyPI  \cite{pypi2018_PyPI}  and the Anaconda Cloud \cite{anacondainc.2018_Anaconda}.
@@ -370,7 +371,7 @@ pip install pymrio --upgrade
 \end{lstlisting}
 or
 \begin{lstlisting}[language=Bash]
-conda install -c konstantinstadler pymrio
+conda install -c conda-forge pymrio 
 \end{lstlisting}
 
 to install Pymrio and all required packages.
@@ -427,7 +428,7 @@ x = pymrio.calc_x(Z=wiod.Z, Y=wiod.Y)
 A = pymrio.calc_A(Z=wiod.Z, x=x)
 \end{lstlisting}
 
-Alternativly, Pymrio provides a function which finds all missing accounts and calculates them:
+Alternativly, Pymrio provides a function which identifies all missing accounts and calculates them:
 \begin{lstlisting}
 wiod.calc_all()
 \end{lstlisting}
@@ -572,7 +573,7 @@ For more information about the capabilities of Pymrio check the online documenta
 
 All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit-tested against published results extracted from a classic input-output textbook \cite{miller2009_Inputoutput}.
 Additional unit tests validate various components of the aggregation, file IO and other utility methods.
-Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package. Currently, the test coverage exceeds 90 \% \url{https://cutt.ly/JwPggqV}. 
+Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package. Currently, the test coverage is at around 90 \% \url{https://cutt.ly/JwPggqV}. 
 
 All tests are implemented in pytest and users can verify the correctness of Pymrio, after installing pytest, by
 
@@ -584,7 +585,7 @@ in the root of the local copy of Pymrio.
 
 In addition, Pymrio uses the continuous integration platform Travis CI for automatic testing after each change of the code base uploaded to the source repository. After each build, test coverage is automatically calculated using the coveralls platform \url{https://coveralls.io}.
 
-The Pymrio source code follows the pep8 specifications ; accordance with this code standard is also tested through Travis CI integration. This implies, that any code contribution to Pymrio must follow the pep8 guidelines.
+The Pymrio source code follows the PEP 8 specifications as implemented by the Black code formatter (\url{https://github.com/psf/black}). Accordance with it is tested through the continous integration for each code contribution. More information on the code style and required tests for acceptance are outlined in the CONTRIBUTING file in the root of code repository. 
 
 The Pymrio documentation is build using the Sphinx Python Documentation Generator and hosted on readthedocs (\url{http://pymrio.readthedocs.io}).
 
@@ -603,7 +604,7 @@ GNU/Linux, Mac OSX, Windows and any other operating systems running Python with 
 
 \section*{Programming language}
 
-Pymrio was built in Python 3 and currently (Pymrio version 0.4.0) tested for Python 3.7.
+Pymrio was built in Python 3 and currently (Pymrio version 0.4.0) tested for Python 3.7, 3.8 and 3.9.
 
 
 \section*{Additional system requirements}
@@ -613,14 +614,15 @@ The actual memory requirements depend on the MRIO database to be analysed with P
 
 \section*{Dependencies}
 
-For the current Pymrio version 0.4.0:
+For the current Pymrio version 0.4.2:
 
 \begin{itemize}
-    \item pandas $\ge$ 0.25.0
+    \item pandas $\ge$ 1.0.0
     \item numpy $\ge$ 1.13.4
     \item matplotlib $\ge$ 2.0.0
     \item requests $\ge$ 2.18
     \item xlrd $\ge$ 1.1.0 
+     \item xlrd $\ge$ 3.0.0
     \item docutils $\ge$ 0.14 
 \end{itemize}
 
@@ -628,7 +630,7 @@ The main dependency of Pymrio is Pandas and future versions of Pymrio will follo
 
 The file requirements.txt in the source repository contains an up-to-date list of all requirements.
 
-For development and unit testing, pytest $\ge$ 3.1 and pytest-pep8 are required.
+For development and unit testing the pytest module and black code formater are required. The requirments_test.txt file and alternatively the environment_dev.yml file (for using conda environments) outline all dependencies necessary for testing and development.
 
 \section*{Software location:}
 
@@ -639,8 +641,8 @@ For development and unit testing, pytest $\ge$ 3.1 and pytest-pep8 are required.
     \item[Persistent identifier:] \url{https://doi.org/10.5281/zenodo.1146054}
 	\item[Licence:] GPL v3
 	\item[Publisher:]  Konstantin Stadler
-    \item[Version published:] 0.4.0 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
-    \item[Date published:] 12/08/19 (version 0.4.0)
+    \item[Version published:] 0.4.2 and earlier versions. The DOI above always resolves to the latest version, previous versions can be identified with separate DOIs (see versions sections on the Zenodo repository page). 
+    \item[Date published:] 19/11/20 (version 0.4.2)
 \end{description}
 
 
@@ -650,7 +652,7 @@ For development and unit testing, pytest $\ge$ 3.1 and pytest-pep8 are required.
     \item[Name:] Github (Pymrio is also hosted on pypi and anaconda cloud)
     \item[Persistent identifier:] \url{https://github.com/konstantinstadler/pymrio}
 	\item[Licence:] GPL v3
-    \item[Date published:] 12/08/19 (version 0.4.0)
+    \item[Date published:] 19/11/20 (version 0.4.2)
 \end{description}
 
 {\bf Emulation environment} 
