@@ -76,18 +76,18 @@ Sustainability Analysis, Multi Regional Input Output Analysis, \\ Footprinting, 
 
 Environmentally Extended Multi-Regional Input-Output (EE MRIO) tables describe economic relationships within and between regions and their environmental repercussions.
 
-They capture the full life-cycle impacts of goods and services across international supply chains and allow researchers to understand the environmental, social and economic consequences of consumption in todays globalised world. 
-Research questions that can be answered using MRIO tables range from calculating the carbon footprint of nations \cite{tukker2014_Global, kanemoto2016_Mapping} and households \cite{ivanova2016_Environmental}, to analysing the impacts of international trade on biodiversity \cite{lenzen2012_International, verones2017_Resource, marques2019_Increasing}, to investigations of the material requirments of the current global economcy \cite{wiedmann2013_material}. In addition, EE MRIO analysis is increasingly used to inform policy makers about connections, trade-offs and synergies across environmental and social issues \cite{simas2014_Bad, simas2017_Correlation, vivanco2018_Nexus, wood2020_peak}.
+They capture the full life-cycle impacts of goods and services across international supply chains and allow researchers to understand the environmental, social and economic consequences of consumption in today's globalised world. 
+Research questions that can be answered using MRIO tables range from calculating the carbon footprint of nations \cite{tukker2014_Global, kanemoto2016_Mapping} and households \cite{ivanova2016_Environmental}, to analysing the impacts of international trade on biodiversity \cite{lenzen2012_International, verones2017_Resource, marques2019_Increasing}, to investigations of the material requirements of the current global economy \cite{wiedmann2013_material}. In addition, EE MRIO analysis is increasingly used to inform policy makers about connections, trade-offs and synergies across environmental and social issues \cite{simas2014_Bad, simas2017_Correlation, vivanco2018_Nexus, wood2020_peak}.
 
 \subsection*{The MRIO framework}
 
 
 The basic building blocks of EE MRIO models are (1) domestic input-output (IO) tables linked with (2) detailed bilateral trade data and extended with (3) environmental accounts \cite{wiedmann2011_Quo}.
 
-The first building block, the domestic IO tables depict the inter-industry relationship within an economy. 
-These are typically square tables, with column/row indices for all industries within a country.
-One columns in these tables describes the inputs (products from other industries) required by one specific industry (or more general product production process) to produce its output. 
-Arranging these column vectors into a two dimensional matrix, the rows then depict all users of the output of a specific industry. 
+The first building block, the domestic IO tables, depict the inter-industry relationship within an economy. 
+These are typically square tables with column/row indices for all industries within a country.
+One column in these tables describes the inputs (products from other industries) required by one specific industry (or more general product production process) to produce its output. 
+Arranging these column vectors into a two-dimensional matrix, the rows then depict all users of the output of a specific industry. 
 Thus, the column of an IO table describes an industry in its role as user of products while the corresponding row describes its role as supplier.
 
 In most cases these tables are further extended by sections representing the value added of each industry, taxes and subsidies as well as final consumption (private and government consumers as well as capital formation).
@@ -100,7 +100,7 @@ Similar to domestic IO tables, global MRIOs are inherently complete and consiste
 
 Since global MRIOs allow the tracking of products through the global supply chain they have been proven to be an ideal tool to also track the environmental burden associated with the production processes along the supply chains. 
 In order to do so, one conceptually regards environmental effects like land use, emissions or material use as required inputs into the production process of a certain product. 
-This links the environmental consequences due to the production of a product to the products itself. 
+This links the environmental consequences due to the production of a product to the product itself. 
 Fundamentally, these opens up two contrasting perspectives: Production-based environmental accounts, which describe the environmental consequences at the place of production and the consumption-based environmental accounts, which assigns the environmental consequences of production to the final consumer of the product. 
 The later are also known as various kinds of footprints and became a stable tool to describe the environmental performance of countries \cite{tukker2014_Global, ivanova2017_Mapping, giljum2016_Identifying}.
 
@@ -112,7 +112,7 @@ The mathematical handling of these tables is described further below in the sect
 In contrast to other Industrial Ecology methodologies like 
 Life Cycle Assessment (e.g. Brightway \cite{mutel2017_Brightway}, openLCA \cite{openlca2018_openLCA})
 or Material Flow Analysis (e.g. STAN \cite{cencic2008_Material}), 
-few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015_Lifting}. One of the very few well documented and stand alone packages for IO analysis, PyIO \cite{nazara2003_PyIO}, is not available for Python 3 and does not provide parsers for current MRIO databases (the package has not been updated since 2011 but is still available at \texttt{http://www.real.illinois.edu/pyio}). Another framework, the MRIOLab suite \cite{lenzen2017_Global, geschke2017_Virtual} takes a different approach: it provides a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. The MRIOLab also includes functions for MRIO analysis. These, however, are not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since the tables can not fully reproduced within the MRIOLab \cite{reyes2017_Virtual, rahman2017_flexible}.
+few generally available analysis packages for (Multi-Regional) Input-Output tables are available \cite{pauliuk2015_Lifting}. One of the very few well documented and stand-alone packages for IO analysis, PyIO \cite{nazara2003_PyIO}, is not available for Python 3 and does not provide parsers for current MRIO databases (the package has not been updated since 2011 but is still available at \texttt{http://www.real.illinois.edu/pyio}). Another framework, the MRIOLab suite \cite{lenzen2017_Global, geschke2017_Virtual} takes a different approach: it provides a virtual lab for the compilation of MRIO tables and thereby streamlining the compilation of MRIO tables. The MRIOLab also includes functions for MRIO analysis. These, however, are not well suited for the analysis of MRIO tables compiled independent of the MRIOLab since the tables can not fully reproduced within the MRIOLab \cite{reyes2017_Virtual, rahman2017_flexible}.
 
 As a consequence of the lack of a generic MRIO analysis toolkit, MRIO analysis today relies on often ad-hoc produced scripts and functions. This hinders reproducibility of results and the reuse of previous coding efforts.
 Here I present the open source tool Pymrio, a Python 3 package, which aims to close this method gap for EE MRIO analysis.
@@ -128,13 +128,13 @@ The reuse potential and future development plans are pointed out at the end of t
 
 This section gives an overview about the mathematical background of EE MRIO analysis as used in Pymrio. 
 
-The focus of this section are on the specifics of the multi-regional aspects of input-output analysis. 
+The focus of this section is on the specifics of the multi-regional aspects of input-output analysis. 
 Note, however, that Pymrio can also be used for analysing simple single country input-output tables. 
-Readers unfamiliar with input-output analysis are referred to the standard text-book for input-output analysis by Miller and Blair \cite{miller2009_Inputoutput}. Exercises of this book are also used in the online documentation which also highlights how Pymrio can be used for teaching of input-output methods (\url{https://pymrio.readthedocs.io/en/latest/notebooks/pymrio_directly_assign_attributes.html}). 
+Readers unfamiliar with input-output analysis are referred to the standard textbook for input-output analysis by Miller and Blair \cite{miller2009_Inputoutput}. Exercises of this book are also used in the online documentation which also highlights how Pymrio can be used for teaching of input-output methods (\url{https://pymrio.readthedocs.io/en/latest/notebooks/pymrio_directly_assign_attributes.html}). 
 
 Generally, mathematical routines implemented in Pymrio follow the equations described below.
 If, however, a more computationally efficient mechanism was available this was preferred.
-In these cases the original formula remains as comment in the source code.
+In these cases, the original formula remains as comment in the source code.
 Mostly,  this was the case when instead of a matrix multiplication with a diagonalized vector the operation can be efficiently executed using numpy broadcasting mechanisms \cite{vanderwalt2011_NumPy}.
 
 The Input-Output analysis implemented in Pymrio follows the classic Leontief demand-style modeling  \cite{leontief1970_Environmental}.
@@ -179,7 +179,7 @@ with $e$ representing the summation vector (column vector with 1's of
 appropriate dimension) and $x$ the gross output.
 
 The direct requirement matrix $A$ is given by multiplication of $Z$ with the
-diagonalised and inverted gross output $x$:
+diagonalized and inverted gross output $x$:
 
 \begin{equation}
     A = Z\hat{x}^{-1}
@@ -210,7 +210,7 @@ Multipliers (total, direct and indirect, requirement factors for one unit of out
 
 
 Total requirements (footprints in case of environmental requirements) for any
-given final demand vector $y$ are then given by 
+given final demand vector $y$ are given by 
 
 \begin{equation}
     D_{cba} = My
@@ -237,7 +237,7 @@ If parts of the environmental stressors occurring during the final use of produc
 these can be represented by $F_Y$ (e.g. household emissions). 
 These need to be added to the total production- and consumption-based accounts to obtain the total impacts per country. 
 Total territorial requirements/emissions per region $i$ are therefore given by summing over the stressors per sector (0\ldots$m$) 
-plus the stressors occurring due to the final consumption for all final demand categories (0\ldots$w$) of that region.
+plus the stressors directly linked to final consumption for all final demand categories (0\ldots$w$) of that region.
 
 \begin{equation}
     D_{pba}^i = \sum_{s=0}^m F^i_s + \sum_{c=0}^w F_Y^{i_c}
@@ -249,7 +249,7 @@ Similarly, total requirements (footprints in case of environmental requirements)
     D_{cba}^i = \sum_{s=0}^m D_{cba}^{i_s} + \sum_{c=0}^w F_Y^{i_c}
 \end{equation}
 
-Internally, the summation are implemented with the \textit{group-by} functionality provided by the Pandas package \cite{mckinney2010_Data}.
+Internally, the summations are implemented with the \textit{group-by} functionality provided by the Pandas package \cite{mckinney2010_Data}.
 
 
 \subsubsection*{Aggregation}
@@ -322,13 +322,13 @@ and stressors occurring during final demand by
 \subsection*{Implementation}
 
 
-The main design principle of Pymrio is based on the concept that an EE MRIO system can be effectively represented as an object in an Object Oriented Programming (OOP) language.
+The main design principle of Pymrio is based on the concept that an EE MRIO system can be effectively represented as an object in an Object-Oriented Programming (OOP) language.
 In Pymrio, such an EE MRIO object consists of a core component describing the economic relationships grouped with a various number of components describing the environmental and/or social extensions (satellite accounts, see Figure 1). 
 All components of the main object are in turn represented as objects, allowing to implement specific methods for each sub-component.
 
 \begin{figure}[h!]
   \includegraphics[width=.9\textwidth]{./fig/IOSystem.png}
-  \caption{\textbf{Class diagramm of the core Pymrio class.}
+  \caption{\textbf{Class diagram of the core Pymrio class.}
   The composite class IOSystem consists of the economic core with the actual data stored in Pandas DataFrames and a variable number of Extension classes. Each Extension consists of multiple Pandas DataFrames. Both, the IOSystem and Extension class are derived from an abstract CoreSystem class implementing the shared functionality of both classes. Class methods are not depicted here.}
   \end{figure}
 
@@ -344,7 +344,7 @@ Pymrio is openly available under the GNU General Public License v3.0.
 
 To date, no standard way of storing MRIO databases has been defined.
 For example, the WIOD database \cite{timmer2015_Illustrated} is provided as xlsx tables, whereas Eora \cite{lenzen2013_Building} and EXIOBASE \cite{stadler2018_EXIOBASE} use (compressed) csv tables.
-For the two latter, however, the approach differs as Eora26 used pure numerical tables with separate files describing the headers, whereas EXIOBASE use csv tables which include the headers.
+For the two latter, however, the approach differs as Eora26 uses pure numerical tables with separate files describing the headers, whereas EXIOBASE uses csv tables which include the headers.
 To ease the use of different MRIO systems, Pymrio include parsers for the different formats.
 After parsing a MRIO system, Pymrio stores all data in a consistent way.
 For each component (core system and extension) data is stored in a separate folder.
@@ -410,7 +410,7 @@ The transaction matrix can be inspected with
 wiod.Z
 \end{lstlisting}
 
-which returns a panda DataFrame with the recoreded monetary flows.
+which returns a panda DataFrame with the recorded monetary flows.
 
 WIOD includes several extensions, which are stored as sub-objects (see Figure 1) in Pymrio. 
 For example, in order to see the AIR emissions provided by WIOD:
@@ -428,7 +428,7 @@ x = pymrio.calc_x(Z=wiod.Z, Y=wiod.Y)
 A = pymrio.calc_A(Z=wiod.Z, x=x)
 \end{lstlisting}
 
-Alternativly, Pymrio provides a function which identifies all missing accounts and calculates them:
+Alternatively, Pymrio provides a function which identifies all missing accounts and calculates them:
 \begin{lstlisting}
 wiod.calc_all()
 \end{lstlisting}
@@ -438,7 +438,7 @@ At this point, a basic EE MRIO analysis is accomplished. For example, the region
 wiod.AIR.D_cba_reg
 \end{lstlisting}
 
-Units are stored separetly in 
+Units are stored separately in 
 \begin{lstlisting}
 wiod.AIR.unit
 \end{lstlisting}
@@ -469,7 +469,7 @@ with plt.style.context('ggplot'):
   \begin{figure}[h!]
       \includegraphics[width=.9\textwidth]{./fig/airch4.png}
       \caption{\textbf{CH\textsubscript{4} emissions of Germany (DEU), the UK (GBR), Rest of the EU and Other countries}
-      This figure was produced with Pymrio and matplotlib after aggregating the WIOD countries into the three regions specified above)}
+      This figure was produced with Pymrio and matplotlib after aggregating the WIOD countries into the three regions specified above}
       \end{figure}
 
 
@@ -492,7 +492,7 @@ In the next step the automatic calculation routine of Pymrio is called again to 
 wiod.calc_all()
 \end{lstlisting}
 
-The diagonalzied CH4 data now shows the source and destination of the specified stressor (CH\textsubscript{4}):
+The diagonalized CH4 data now shows the source and destination of the specified stressor (CH\textsubscript{4}):
 \begin{lstlisting}
 wiod.CH4_source.D_cba
 \end{lstlisting}
@@ -573,7 +573,7 @@ For more information about the capabilities of Pymrio check the online documenta
 
 All basic mathematical functions of Pymrio, as described in the section Mathematical Background above, are unit-tested against published results extracted from a classic input-output textbook \cite{miller2009_Inputoutput}.
 Additional unit tests validate various components of the aggregation, file IO and other utility methods.
-Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package. Currently, the test coverage is at around 90 \% \url{https://cutt.ly/JwPggqV}. 
+Beyond the unit tests, Pymrio includes a small pseudo MRIO system which is used for a full regression test of the package. Currently, the test coverage is at around 90 \%. 
 
 All tests are implemented in pytest and users can verify the correctness of Pymrio, after installing pytest, by
 
@@ -585,7 +585,7 @@ in the root of the local copy of Pymrio.
 
 In addition, Pymrio uses the continuous integration platform Travis CI for automatic testing after each change of the code base uploaded to the source repository. After each build, test coverage is automatically calculated using the coveralls platform \url{https://coveralls.io}.
 
-The Pymrio source code follows the PEP 8 specifications as implemented by the Black code formatter (\url{https://github.com/psf/black}). Accordance with it is tested through the continous integration for each code contribution. More information on the code style and required tests for acceptance are outlined in the CONTRIBUTING file in the root of code repository. 
+The Pymrio source code follows the PEP 8 specifications as implemented by the Black code formatter (\url{https://github.com/psf/black}). Accordance with it is tested through the continuous integration for each code contribution. More information on the code style and required tests for acceptance are outlined in the CONTRIBUTING file in the root of code repository. 
 
 The Pymrio documentation is build using the Sphinx Python Documentation Generator and hosted on readthedocs (\url{http://pymrio.readthedocs.io}).
 
@@ -594,7 +594,7 @@ Furthermore, the code examples and tutorials given the in the documentation are 
 
 Updated results of the Travis CI tests as well as the Sphinx documentation rebuild are indicated at the beginning of the readme file at the source repository. 
 
-Contributors to the Pymrio code based are advised to adhere to the testing and code standards established for Pymrio. Further details can be found in the Contribution section of the documentation. 
+Contributors to the Pymrio code based are advised to adhere to the testing and code standards established for Pymrio. Further details can be found in the Contribution section of the online documentation. 
 
 \section*{(2) Availability}
 \vspace{0.5cm}
@@ -604,7 +604,7 @@ GNU/Linux, Mac OSX, Windows and any other operating systems running Python with 
 
 \section*{Programming language}
 
-Pymrio was built in Python 3 and currently (Pymrio version 0.4.0) tested for Python 3.7, 3.8 and 3.9.
+Pymrio was built in Python 3 and currently (Pymrio version 0.4.2) tested for Python 3.7, 3.8 and 3.9.
 
 
 \section*{Additional system requirements}
@@ -630,7 +630,7 @@ The main dependency of Pymrio is Pandas and future versions of Pymrio will follo
 
 The file requirements.txt in the source repository contains an up-to-date list of all requirements.
 
-For development and unit testing the pytest module and black code formater are required. The requirements\_test.txt file and alternatively the environment\_dev.yml file (for using conda environments) outline all dependencies necessary for testing and development.
+For development and unit testing the pytest module and black code formatter are required. The requirements\_test.txt file and alternatively the environment\_dev.yml file (for using conda environments) outline all dependencies necessary for testing and development.
 
 \section*{Software location:}
 
@@ -695,7 +695,7 @@ I am much obliged also to all people already using Pymrio and providing feedback
 
 \section*{Funding statement}
 
-Parts of the development of Pymrio was funded by the European Commission under the DESIRE Project (grant no.: 308552).
+The development of Pymrio was funded by the European Commission under the DESIRE Project (grant no.: 308552) as well as by The Research Council of Norway IKTPLUSS project HiTEA (grant no.: 302830).
 
 \section*{Competing interests}
 
